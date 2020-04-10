@@ -1,7 +1,8 @@
 HALIDE=$(dirname $0)/../../..
 echo "Using Halide in " $HALIDE
 
-export CXX="ccache c++"
+# export CXX="ccache c++"
+export CXX="c++"
 
 # Best single set of params for master on the benchmarking machine, found with grid search on the runtime pipelines
 # There are already baked into src/AutoSchedule.cpp as the default

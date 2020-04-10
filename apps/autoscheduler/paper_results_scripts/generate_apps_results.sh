@@ -1,7 +1,8 @@
 HALIDE=$(dirname $0)/../../..
 echo "Using Halide in " $HALIDE
 
-export CXX="ccache c++"
+# export CXX="ccache c++"
+export CXX="c++"
 
 # Best single set of params for master on the benchmarking machine, found with grid search on the runtime pipelines
 # There are already baked into src/AutoSchedule.cpp as the default
@@ -9,7 +10,7 @@ export CXX="ccache c++"
 
 export HL_PERMIT_FAILED_UNROLL=1
 export HL_WEIGHTS_DIR=${HALIDE}/apps/autoscheduler/weights
-export HL_TARGET=x86-64-avx2
+export HL_TARGET="host" # x86-64-avx2
 
 # no random dropout
 export HL_RANDOM_DROPOUT=100
@@ -17,10 +18,12 @@ export HL_RANDOM_DROPOUT=100
 # greedy
 # export HL_BEAM_SIZE=1
 # export HL_NUM_PASSES=1
+# results="greedy"
 
 # beam search
 export HL_BEAM_SIZE=32
 export HL_NUM_PASSES=5
+results="beam"
 
 # ablation where we restrict to old space
 # export HL_NO_SUBTILING=1
@@ -48,8 +51,8 @@ make -j -C ${HALIDE}/apps/interpolate_generator bin/filter
 make -j -C ${HALIDE}/apps/conv_layer bin/process
 make -j -C ${HALIDE}/apps/mat_mul_generator bin/filter
 make -j -C ${HALIDE}/apps/iir_blur_generator bin/process
-make -j -C ${HALIDE}/apps/resnet_50_blockwise test
+# make -j -C ${HALIDE}/apps/resnet_50_blockwise test &> $results/resnet_50_blockwise.txt
 make -j -C ${HALIDE}/apps/bgu bin/process
 
 # benchmark everything
-for app in ${APPS}; do make -C ${HALIDE}/apps/${app} test; done
+for app in ${APPS}; do make -C ${HALIDE}/apps/${app} test &> $results/$app.txt; done
