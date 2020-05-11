@@ -330,6 +330,30 @@ struct State {
             }
         }
     }
+    
+    bool fast_calculate_cost(const FunctionDAG &dag, const MachineParams &params, CostModel *cost_model, bool verbose = false, bool enq = false) {
+        #if 1
+        StageMap<ScheduleFeatures> features;
+        compute_featurization(dag, params, &features);
+
+        // Perform some addition pruning before burdening the cost model with silly states
+        for (auto it = features.begin(); it != features.end(); it++) {
+            if (!it.key()->node->is_wrapper) {  // It's OK to repeatedly stage data
+                auto &feat = it.value();
+                if (feat.points_computed_total + feat.inlined_calls > 8 * feat.points_computed_minimum) {
+                    return false;
+                }
+            }
+        }
+        #endif
+
+        // Avoid code size explosion from recursive inlining.
+        if (root->max_inlined_calls() >= 256) {
+            return false;
+        }
+
+        return true;
+    }
 
     bool calculate_cost(const FunctionDAG &dag, const MachineParams &params, CostModel *cost_model, bool verbose = false, bool enq = false) {
         StageMap<ScheduleFeatures> features;
@@ -814,13 +838,13 @@ struct State {
     }
 
     // return possible actions from this state
-    void get_actions(std::vector<Action>& vactions) const{
-            inner->generate_actions(dag, params, cost_model,vactions);
+    void get_actions(std::vector<Action>& vactions, bool in_simulation=false) const{
+            inner->generate_actions(dag, params, cost_model,vactions, in_simulation);
     }
     // find best action to apply next, used during simulation to improve the estimate over random
     bool apply_best_action(double& bestReward){//, std::vector<Action>& backup_actions) {
         std::vector<Action> actions;
-        get_actions(actions);
+        get_actions(actions, true);
         //std::cout << "action size: " <<actions.size() << std::endl;
         if (actions.size() == 0 || inner->num_decisions_made == 2 * (int)dag.nodes.size()){// return true;
             inner->calculate_cost(dag, params, cost_model, false, true);
@@ -832,6 +856,7 @@ struct State {
         unsigned best = 0;
         if(actions.size()==1) best = 0; 
         // with 50% probabality pick best
+#if 0
         else if(rand()%2 ==0) {
                 for(auto& act : actions) {
                     act.state->calculate_cost(dag, params, cost_model, false, true);
@@ -846,6 +871,7 @@ struct State {
                     }
                 }
             }
+#endif
         // otherwise random
         else best = rand() % actions.size();
         // AHA: an optimization to keep last actions when node had more than 1 child to pick best later
@@ -862,6 +888,7 @@ struct State {
         //random_action.print();
         //std::cout << "reward "<< bestReward << std::endl;
         return false;
+
     }
     //AHA: it is ok to do this if the next states are all of size 1
     void apply_best_greedily(double & bestReward, std::vector<Action>& actions){
@@ -931,7 +958,8 @@ struct State {
     void generate_actions(const FunctionDAG &dag,
                           const MachineParams &params,
                           CostModel *cost_model,
-                          std::vector<Action> &actions) const {
+                          std::vector<Action> &actions,
+                          const bool in_simulation=false) const {
         internal_assert(root.defined() && root->is_root());
         if (num_decisions_made == 2*(int)dag.nodes.size()) {
             return;
@@ -1052,13 +1080,16 @@ struct State {
                     auto child = make_child();
                     child->root = std::move(n);
                     child->num_decisions_made++;
-                    if (child->calculate_cost(dag, params, cost_model)) {
+                    
+                    if (child->fast_calculate_cost(dag, params, cost_model))
+                    {
                         num_children++;
                         // AHA: shouldn't the index (num_children-1) fix the hash issue?
                         unsigned hash = vector_dim;
                         //child->structural_hash(hash, /*depth*/10);
                         //child->structural_hash(/*depth*/hash); // AHA:hash being depth seems ambiguous
                         actions.emplace_back(Action(ActionEnum::Retile,num_children-1, hash, std::move(child)));
+                        if (in_simulation) break;
                     }
                 }
             }
@@ -1214,9 +1245,10 @@ struct State {
                     }
                     child->root = new_root;
                     child->num_decisions_made++;
-                    if (child->calculate_cost(dag, params, cost_model)) {
+                    if (true || child->fast_calculate_cost(dag, params, cost_model)) {
                         num_children++;
                         actions.emplace_back(Action(ActionEnum::Option,num_children-1, o.hash(), std::move(child)));
+                        //if (in_simulation) break;
                     }
                 }
             }
