@@ -1,0 +1,19 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/mat_mul'
+bin/host/filter
+Manually-tuned time: 12.9666ms
+Auto-scheduled time: 11.8435ms
+make: Leaving directory '/home/ubuntu/Halide/apps/mat_mul'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/Halide/apps/mat_mul'
+bin/host/filter
+Manually-tuned time: 13.1575ms
+Auto-scheduled time: 12.2177ms
+make: Leaving directory '/home/ubuntu/Halide/apps/mat_mul'
+
+
+RL_END_OF_RUN 13
+

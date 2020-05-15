@@ -1,0 +1,21 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/nl_means'
+bin/host/process ../images/rgb.png 7 7 0.12 10 bin/host/out.png
+Input size: 1536 by 2560, patch size: 7, search area: 7, sigma: 0.120000
+Manually-tuned time: 51.6959ms
+Auto-scheduled time: 22.5439ms
+make: Leaving directory '/home/ubuntu/Halide/apps/nl_means'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/Halide/apps/nl_means'
+bin/host/process ../images/rgb.png 7 7 0.12 10 bin/host/out.png
+Input size: 1536 by 2560, patch size: 7, search area: 7, sigma: 0.120000
+Manually-tuned time: 51.9935ms
+Auto-scheduled time: 19.8565ms
+make: Leaving directory '/home/ubuntu/Halide/apps/nl_means'
+
+
+RL_END_OF_RUN 13
+
