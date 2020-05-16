@@ -1,0 +1,28 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 6.11747ms
+Auto-scheduled time: 8.52002ms
+make: Leaving directory '/home/ubuntu/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 6.09612ms
+Auto-scheduled time: 8.4701ms
+make: Leaving directory '/home/ubuntu/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 6.17636ms
+Auto-scheduled time: 8.49819ms
+make: Leaving directory '/home/ubuntu/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 3
+

@@ -1,0 +1,28 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.47078ms
+Auto-scheduled time: 18.1039ms
+make: Leaving directory '/home/ubuntu/Halide/apps/hist'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.15021ms
+Auto-scheduled time: 18.1539ms
+make: Leaving directory '/home/ubuntu/Halide/apps/hist'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.61496ms
+Auto-scheduled time: 18.0598ms
+make: Leaving directory '/home/ubuntu/Halide/apps/hist'
+
+
+RL_END_OF_RUN 3
+

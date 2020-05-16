@@ -1,0 +1,40 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/camera_pipe'
+bin/host/process ../images/bayer_raw.png 3700 2.0 50 1.0 5 bin/host/out.png bin/host/h_auto.png
+input: ../images/bayer_raw.png
+       2592 1968
+Manually-tuned time:	2453.68us
+Auto-scheduled time:	6008.65us
+output: bin/host/out.png
+        2560 1920
+make: Leaving directory '/home/ubuntu/Halide/apps/camera_pipe'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/Halide/apps/camera_pipe'
+bin/host/process ../images/bayer_raw.png 3700 2.0 50 1.0 5 bin/host/out.png bin/host/h_auto.png
+input: ../images/bayer_raw.png
+       2592 1968
+Manually-tuned time:	2521.52us
+Auto-scheduled time:	6849.54us
+output: bin/host/out.png
+        2560 1920
+make: Leaving directory '/home/ubuntu/Halide/apps/camera_pipe'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/Halide/apps/camera_pipe'
+bin/host/process ../images/bayer_raw.png 3700 2.0 50 1.0 5 bin/host/out.png bin/host/h_auto.png
+input: ../images/bayer_raw.png
+       2592 1968
+Manually-tuned time:	2288.95us
+Auto-scheduled time:	6508.38us
+output: bin/host/out.png
+        2560 1920
+make: Leaving directory '/home/ubuntu/Halide/apps/camera_pipe'
+
+
+RL_END_OF_RUN 3
+

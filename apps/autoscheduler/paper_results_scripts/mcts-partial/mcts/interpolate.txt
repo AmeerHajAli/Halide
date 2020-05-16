@@ -1,0 +1,347 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/interpolate'
+bin/host/interpolate.generator -g interpolate -f interpolate -o bin/host target=host-no_runtime auto_schedule=false
+bin/host/interpolate.generator -g interpolate -f interpolate_auto_schedule -o bin/host target=host-no_runtime auto_schedule=true -p /home/ubuntu/Halide/apps/autoscheduler/bin/libauto_schedule.so -s Adams2019
+generate_rl_schedule for target=x86-64-linux-avx-avx2-avx512-avx512_skylake-f16c-fma-no_runtime-sse41
+Seed = 13
+mcts_depth 104
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+Cost evaluated this many times: 0
+best intermediate value -19.1227
+finished depth 1 best value so far -19.1227
+Cost evaluated this many times: 28247
+best intermediate value -16.8987
+finished depth 2 best value so far -16.8987
+Cost evaluated this many times: 88096
+best intermediate value -1.11111e+11
+finished depth 3 best value so far -16.8987
+Cost evaluated this many times: 88096
+best intermediate value -16.3099
+finished depth 4 best value so far -16.3099
+Cost evaluated this many times: 157330
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -16.3099
+Cost evaluated this many times: 157330
+best intermediate value -15.9429
+finished depth 6 best value so far -15.9429
+Cost evaluated this many times: 215935
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -15.9429
+Cost evaluated this many times: 215935
+best intermediate value -15.452
+finished depth 8 best value so far -15.452
+Cost evaluated this many times: 280980
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -15.452
+Cost evaluated this many times: 280980
+best intermediate value -14.7397
+finished depth 10 best value so far -14.7397
+Cost evaluated this many times: 352971
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -14.7397
+Cost evaluated this many times: 352971
+best intermediate value -15.4957
+finished depth 12 best value so far -14.7397
+Cost evaluated this many times: 422896
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -14.7397
+Cost evaluated this many times: 422896
+best intermediate value -14.8923
+finished depth 14 best value so far -14.7397
+Cost evaluated this many times: 497728
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -14.7397
+Cost evaluated this many times: 497728
+best intermediate value -14.812
+finished depth 16 best value so far -14.7397
+Cost evaluated this many times: 580905
+best intermediate value -15.2821
+finished depth 17 best value so far -14.7397
+Cost evaluated this many times: 665326
+best intermediate value -15.3845
+finished depth 18 best value so far -14.7397
+Cost evaluated this many times: 740098
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -14.7397
+Cost evaluated this many times: 740098
+best intermediate value -14.9833
+finished depth 20 best value so far -14.7397
+Cost evaluated this many times: 830913
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -14.7397
+Cost evaluated this many times: 830913
+best intermediate value -14.4651
+finished depth 22 best value so far -14.4651
+Cost evaluated this many times: 923570
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -14.4651
+Cost evaluated this many times: 923570
+best intermediate value -14.9429
+finished depth 24 best value so far -14.4651
+Cost evaluated this many times: 1018066
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -14.4651
+Cost evaluated this many times: 1018066
+best intermediate value -15.0088
+finished depth 26 best value so far -14.4651
+Cost evaluated this many times: 1119839
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -14.4651
+Cost evaluated this many times: 1119839
+best intermediate value -15.0449
+finished depth 28 best value so far -14.4651
+Cost evaluated this many times: 1228458
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -14.4651
+Cost evaluated this many times: 1228458
+best intermediate value -14.8843
+finished depth 30 best value so far -14.4651
+Cost evaluated this many times: 1339200
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -14.4651
+Cost evaluated this many times: 1339200
+best intermediate value -14.8255
+finished depth 32 best value so far -14.4651
+Cost evaluated this many times: 1458250
+best intermediate value -14.988
+finished depth 33 best value so far -14.4651
+Cost evaluated this many times: 1576057
+best intermediate value -14.8759
+finished depth 34 best value so far -14.4651
+Cost evaluated this many times: 1700534
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -14.4651
+Cost evaluated this many times: 1700534
+best intermediate value -14.6312
+finished depth 36 best value so far -14.4651
+Cost evaluated this many times: 1829877
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -14.4651
+Cost evaluated this many times: 1829877
+best intermediate value -14.7724
+finished depth 38 best value so far -14.4651
+Cost evaluated this many times: 1962754
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -14.4651
+Cost evaluated this many times: 1962754
+best intermediate value -14.8285
+finished depth 40 best value so far -14.4651
+Cost evaluated this many times: 2097749
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -14.4651
+Cost evaluated this many times: 2097749
+best intermediate value -14.8512
+finished depth 42 best value so far -14.4651
+Cost evaluated this many times: 2237051
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -14.4651
+Cost evaluated this many times: 2237051
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -14.4651
+Cost evaluated this many times: 2237051
+best intermediate value -14.7417
+finished depth 45 best value so far -14.4651
+Cost evaluated this many times: 2378911
+best intermediate value -14.8991
+finished depth 46 best value so far -14.4651
+Cost evaluated this many times: 2521654
+best intermediate value -1.11111e+11
+finished depth 47 best value so far -14.4651
+Cost evaluated this many times: 2521654
+best intermediate value -14.8985
+finished depth 48 best value so far -14.4651
+Cost evaluated this many times: 2665209
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -14.4651
+Cost evaluated this many times: 2665209
+best intermediate value -14.8211
+finished depth 50 best value so far -14.4651
+Cost evaluated this many times: 2809638
+best intermediate value -1.11111e+11
+finished depth 51 best value so far -14.4651
+Cost evaluated this many times: 2809638
+best intermediate value -14.7587
+finished depth 52 best value so far -14.4651
+Cost evaluated this many times: 2954430
+best intermediate value -1.11111e+11
+finished depth 53 best value so far -14.4651
+Cost evaluated this many times: 2954430
+best intermediate value -14.7513
+finished depth 54 best value so far -14.4651
+Cost evaluated this many times: 3098926
+best intermediate value -1.11111e+11
+finished depth 55 best value so far -14.4651
+Cost evaluated this many times: 3098926
+best intermediate value -14.6579
+finished depth 56 best value so far -14.4651
+Cost evaluated this many times: 3243524
+best intermediate value -1.11111e+11
+finished depth 57 best value so far -14.4651
+Cost evaluated this many times: 3243524
+best intermediate value -14.7624
+finished depth 58 best value so far -14.4651
+Cost evaluated this many times: 3386975
+best intermediate value -1.11111e+11
+finished depth 59 best value so far -14.4651
+Cost evaluated this many times: 3386975
+best intermediate value -14.784
+finished depth 60 best value so far -14.4651
+Cost evaluated this many times: 3530907
+best intermediate value -1.11111e+11
+finished depth 61 best value so far -14.4651
+Cost evaluated this many times: 3530907
+best intermediate value -14.5698
+finished depth 62 best value so far -14.4651
+Cost evaluated this many times: 3673551
+best intermediate value -1.11111e+11
+finished depth 63 best value so far -14.4651
+Cost evaluated this many times: 3673551
+best intermediate value -14.7333
+finished depth 64 best value so far -14.4651
+Cost evaluated this many times: 3817514
+best intermediate value -1.11111e+11
+finished depth 65 best value so far -14.4651
+Cost evaluated this many times: 3817514
+best intermediate value -14.5961
+finished depth 66 best value so far -14.4651
+Cost evaluated this many times: 3962187
+best intermediate value -14.6636
+finished depth 67 best value so far -14.4651
+Cost evaluated this many times: 4105684
+best intermediate value -14.7992
+finished depth 68 best value so far -14.4651
+Cost evaluated this many times: 4247079
+best intermediate value -1.11111e+11
+finished depth 69 best value so far -14.4651
+Cost evaluated this many times: 4247079
+best intermediate value -14.6683
+finished depth 70 best value so far -14.4651
+Cost evaluated this many times: 4386136
+best intermediate value -14.8448
+finished depth 71 best value so far -14.4651
+Cost evaluated this many times: 4526761
+best intermediate value -14.7428
+finished depth 72 best value so far -14.4651
+Cost evaluated this many times: 4662552
+best intermediate value -1.11111e+11
+finished depth 73 best value so far -14.4651
+Cost evaluated this many times: 4662552
+best intermediate value -14.5813
+finished depth 74 best value so far -14.4651
+Cost evaluated this many times: 4793871
+best intermediate value -14.5183
+finished depth 75 best value so far -14.4651
+Cost evaluated this many times: 4928023
+best intermediate value -14.5432
+finished depth 76 best value so far -14.4651
+Cost evaluated this many times: 5058359
+best intermediate value -1.11111e+11
+finished depth 77 best value so far -14.4651
+Cost evaluated this many times: 5058359
+best intermediate value -14.7314
+finished depth 78 best value so far -14.4651
+Cost evaluated this many times: 5196507
+best intermediate value -14.6062
+finished depth 79 best value so far -14.4651
+Cost evaluated this many times: 5340432
+best intermediate value -14.5907
+finished depth 80 best value so far -14.4651
+Cost evaluated this many times: 5477053
+best intermediate value -1.11111e+11
+finished depth 81 best value so far -14.4651
+Cost evaluated this many times: 5477053
+best intermediate value -14.7376
+finished depth 82 best value so far -14.4651
+Cost evaluated this many times: 5621193
+best intermediate value -1.11111e+11
+finished depth 83 best value so far -14.4651
+Cost evaluated this many times: 5621193
+best intermediate value -14.5578
+finished depth 84 best value so far -14.4651
+Cost evaluated this many times: 5761273
+best intermediate value -14.4242
+finished depth 85 best value so far -14.4242
+Cost evaluated this many times: 5899021
+best intermediate value -14.4444
+finished depth 86 best value so far -14.4242
+Cost evaluated this many times: 6018100
+best intermediate value -1.11111e+11
+finished depth 87 best value so far -14.4242
+Cost evaluated this many times: 6018100
+best intermediate value -14.5422
+finished depth 88 best value so far -14.4242
+Cost evaluated this many times: 6126057
+best intermediate value -14.4138
+finished depth 89 best value so far -14.4138
+Cost evaluated this many times: 6239254
+best intermediate value -14.6266
+finished depth 90 best value so far -14.4138
+Cost evaluated this many times: 6317456
+best intermediate value -1.11111e+11
+finished depth 91 best value so far -14.4138
+Cost evaluated this many times: 6317456
+best intermediate value -14.3656
+finished depth 92 best value so far -14.3656
+Cost evaluated this many times: 6393452
+best intermediate value -14.3656
+finished depth 93 best value so far -14.3656
+Cost evaluated this many times: 6503582
+best intermediate value -14.3656
+finished depth 94 best value so far -14.3656
+Cost evaluated this many times: 6581007
+best intermediate value -1.11111e+11
+finished depth 95 best value so far -14.3656
+Cost evaluated this many times: 6581007
+best intermediate value -14.3656
+finished depth 96 best value so far -14.3656
+Cost evaluated this many times: 6665019
+best intermediate value -1.11111e+11
+finished depth 97 best value so far -14.3656
+Cost evaluated this many times: 6665019
+best intermediate value -14.3656
+finished depth 98 best value so far -14.3656
+Cost evaluated this many times: 7143615
+best intermediate value -1.11111e+11
+finished depth 99 best value so far -14.3656
+Cost evaluated this many times: 7143615
+best intermediate value -1.11111e+11
+finished depth 100 best value so far -14.3656
+Cost evaluated this many times: 7143615
+best intermediate value -1.11111e+11
+finished depth 101 best value so far -14.3656
+Cost evaluated this many times: 7143615
+best intermediate value -1.11111e+11
+finished depth 102 best value so far -14.3656
+Cost evaluated this many times: 7143615
+global best cost: 14.3656
+Cost evaluated this many times: 7143615
+bin/host/interpolate.generator -r runtime -o bin/host target=host
+c++ -O3 -std=c++11 -I /home/ubuntu/Halide/distrib/include/ -I /home/ubuntu/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/interpolate.a bin/host/interpolate_auto_schedule.a bin/host/runtime.a -o bin/host/filter  -ldl -lpthread -lz -lpng16  -ljpeg -I/usr/include/libpng16 -I/usr/include/libpng16/..   
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 3.01811ms
+Auto-scheduled time: 7.08382ms
+rm bin/host/interpolate_auto_schedule.a bin/host/interpolate.a bin/host/runtime.a
+make: Leaving directory '/home/ubuntu/Halide/apps/interpolate'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/Halide/apps/interpolate'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 3.05463ms
+Auto-scheduled time: 8.13365ms
+make: Leaving directory '/home/ubuntu/Halide/apps/interpolate'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/Halide/apps/interpolate'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 3.01466ms
+Auto-scheduled time: 8.30321ms
+make: Leaving directory '/home/ubuntu/Halide/apps/interpolate'
+
+
+RL_END_OF_RUN 13
+

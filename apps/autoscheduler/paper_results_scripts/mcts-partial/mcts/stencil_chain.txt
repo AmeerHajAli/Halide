@@ -1,0 +1,28 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.07331ms
+Auto-scheduled time: 10.3461ms
+make: Leaving directory '/home/ubuntu/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.13706ms
+Auto-scheduled time: 25.6304ms
+make: Leaving directory '/home/ubuntu/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.09228ms
+Auto-scheduled time: 12.8281ms
+make: Leaving directory '/home/ubuntu/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 13
+
