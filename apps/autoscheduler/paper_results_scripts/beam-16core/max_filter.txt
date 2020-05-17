@@ -1,0 +1,10 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/max_filter'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 41.8736ms
+Auto-scheduled time: 28.164ms
+make: Leaving directory '/home/ubuntu/Halide/apps/max_filter'
+
+
+RL_END_OF_RUN 0
+
