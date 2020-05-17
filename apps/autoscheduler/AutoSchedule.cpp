@@ -1231,7 +1231,7 @@ void generate_schedule(const std::vector<Function> &outputs,
 ;
     std::vector<std::mt19937> rngs;
     std::vector<FunctionDAG*> dags;    
-    int count = 16;
+    int count = 1;
     for(int i=0; i<count; i++) {
 	  cost_models.emplace_back(make_default_cost_model(weights_in_path, weights_out_path, randomize_weights));
         dags.emplace_back(new FunctionDAG(outputs, params, target));

@@ -1,0 +1,10 @@
+
+make: Entering directory '/home/ubuntu/Halide/apps/interpolate'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 3.27277ms
+Auto-scheduled time: 16.4045ms
+make: Leaving directory '/home/ubuntu/Halide/apps/interpolate'
+
+
+RL_END_OF_RUN 0
+
