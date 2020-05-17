@@ -1203,7 +1203,6 @@ void generate_schedule(const std::vector<Function> &outputs,
         seed = atoi(seed_str.c_str());
     }
     aslog(1) << "Dropout seed = " << seed << '\n';
-    std::mt19937 rng((uint32_t)seed);
 
     // Get the beam size
     string beam_size_str = get_env_variable("HL_BEAM_SIZE");
@@ -1228,23 +1227,42 @@ void generate_schedule(const std::vector<Function> &outputs,
     // Construct a cost model to use to evaluate states. Currently we
     // just have the one, but it's an abstract interface, so others
     // can be slotted in for experimentation.
-    std::unique_ptr<CostModel> cost_model = make_default_cost_model(weights_in_path, weights_out_path, randomize_weights);
-    internal_assert(cost_model != nullptr);
+    std::vector<std::unique_ptr<CostModel>> cost_models
+;
+    std::vector<std::mt19937> rngs;
+    std::vector<FunctionDAG*> dags;    
+    int count = 32;
+    for(int i=0; i<count; i++) {
+	  cost_models.emplace_back(make_default_cost_model(weights_in_path, weights_out_path, randomize_weights));
+        dags.emplace_back(new FunctionDAG(outputs, params, target));
+	rngs.emplace_back((uint32_t)seed + i);
+    }
 
-    IntrusivePtr<State> optimal;
+    IntrusivePtr<State> optimals[count];
+
+#pragma omp parallel for
+    for(int i=0; i<count; i++) {
 
     // Run beam search
-    optimal = optimal_schedule(dag, outputs, params, cost_model.get(), rng, beam_size);
+    optimals[i] = optimal_schedule(*dags[i], outputs, params, cost_models[i].get(), rngs[i], beam_size);
+    }
 
     HALIDE_TOC;
+
+    int idx=0;
+    IntrusivePtr<State> optimal = optimals[0];
+    for(int i=0; i<count; i++) {
+       // Just to get the debugging prints to fire
+       optimals[i]->calculate_cost(*dags[i], params, cost_models[i].get(), aslog::aslog_level() > 0);
+       if (optimals[idx]->cost < optimals[idx]->cost) {
+	  idx = i;
+       }
+    }
 
     aslog(1) << "Cost evaluated this many times: " << State::cost_calculations << '\n';
 
     // Dump the schedule found
     aslog(1) << "** Optimal schedule:\n";
-
-    // Just to get the debugging prints to fire
-    optimal->calculate_cost(dag, params, cost_model.get(), aslog::aslog_level() > 0);
 
     // Apply the schedules to the pipeline
     optimal->apply_schedule(dag, params);
