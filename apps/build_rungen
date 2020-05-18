@@ -1,0 +1,80 @@
+#!/bin/bash
+
+app="$1"
+
+bin="${app}/bin/host"
+if [ "$app" == "resnet_50_blockwise" ]; then
+    bin="${app}/bin"
+fi
+
+HALIDE_DISTRIB_PATH="$PWD/../distrib"
+D="$bin"
+
+# SEED=1
+WEIGHTS="$PWD/autoscheduler/baseline.weights"
+GENERATOR="$bin/${app}.generator"
+PIPELINE=${app}
+AUTOSCHED_BIN="$PWD/autoscheduler/bin"
+HL_TARGET="host"
+FNAME="${app}_auto_schedule"
+
+TIMEOUT_CMD="timeout"
+if [ $(uname -s) = "Darwin" ] && ! which $TIMEOUT_CMD 2>&1 >/dev/null; then
+    # OSX doesn't have timeout; gtimeout is equivalent and available via Homebrew
+    TIMEOUT_CMD="gtimeout"
+    if ! which $TIMEOUT_CMD 2>&1 >/dev/null; then
+        echo "Can't find the command 'gtimeout'. Run 'brew install coreutils' to install it."
+        exit 1
+    fi
+fi
+
+COMPILATION_TIMEOUT=600s
+BENCHMARKING_TIMEOUT=60s
+
+# HL_SEED=${SEED} \
+#     HL_WEIGHTS_DIR=${WEIGHTS} \
+#     HL_MACHINE_PARAMS=32,24000000,40 \
+#     ${TIMEOUT_CMD} -k ${COMPILATION_TIMEOUT} ${COMPILATION_TIMEOUT} \
+#     ${GENERATOR} \
+#     -g ${PIPELINE} \
+#     -f ${FNAME} \
+#     -o ${D} \
+#     -e stmt,assembly,static_library,c_header,registration,schedule,featurization \
+#     target=${HL_TARGET} \
+#     auto_schedule=true \
+#     -p ${AUTOSCHED_BIN}/libauto_schedule.so \
+#     -s Adams2019 \
+#       &> ${D}/compile_log.txt || echo "Compilation failed or timed out for ${D}"
+
+HL_SEED=${SEED} \
+    HL_WEIGHTS_DIR=${WEIGHTS} \
+    HL_MACHINE_PARAMS=32,24000000,40 \
+    ${TIMEOUT_CMD} -k ${COMPILATION_TIMEOUT} ${COMPILATION_TIMEOUT} \
+    ${GENERATOR} \
+    -r halide_runtime \
+    -o ${D} \
+    -e o \
+    target=${HL_TARGET} \
+      &> ${D}/runtime_compile_log.txt || echo "Runtime compilation failed or timed out for ${D}"
+
+c++ \
+    -std=c++11 \
+    -I ${HALIDE_DISTRIB_PATH}/include \
+    ${HALIDE_DISTRIB_PATH}/tools/RunGenMain.cpp \
+    ${D}/${FNAME}.registration.cpp \
+    ${D}/${FNAME}.a \
+    ${D}/halide_runtime.o \
+    -o ${D}/bench \
+    -DHALIDE_NO_PNG -DHALIDE_NO_JPEG \
+    -ldl -lpthread
+
+HL_NUM_THREADS=32 \
+    ${TIMEOUT_CMD} -k ${BENCHMARKING_TIMEOUT} ${BENCHMARKING_TIMEOUT} \
+    ${D}/bench \
+    --estimate_all \
+    --benchmarks=all \
+    $output_extents \
+        | grep "Benchmark for " \
+        | sed 's/Benchmark for '${FNAME}' produces best case of \(\S*\).*/\1/' \
+        | tee ${D}/bench.txt || echo "Benchmarking failed or timed out for ${D}"
+

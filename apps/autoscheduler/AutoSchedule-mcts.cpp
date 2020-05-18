@@ -1724,6 +1724,11 @@ IntrusivePtr<State> optimal_mcts_schedule(
     if (!max_millis_str.empty()) {
         max_millis = atoi(max_millis_str.c_str());
     }
+    string mcts_num_random_trees_str = get_env_variable("MCTS_NUM_RANDOM_TREES");
+    int mcts_num_random_trees = 15;
+    if (!mcts_num_random_trees_str.empty()) {
+        mcts_num_random_trees = atoi(mcts_num_random_trees_str.c_str());
+    }
 
     // Get the max_iterations for the mcts
     string max_iterations_str = get_env_variable("MCTS_MAX_ITERATIONS");
@@ -1768,6 +1773,8 @@ IntrusivePtr<State> optimal_mcts_schedule(
     int mcts_depth = 2 * (int)dags[0]->nodes.size();
     std::cout << "mcts_depth " << mcts_depth << std::endl;
 
+    std::cout << "num_random_trees " << mcts_num_random_trees << std::endl;
+    std::cout << "num_greedy_trees " << num_passes-mcts_num_random_trees << std::endl;
     bool done[num_passes] = { false };
 
     static const string num_global_bests_str = get_env_variable("MCTS_NUM_TIMINGS");
@@ -1786,6 +1793,8 @@ IntrusivePtr<State> optimal_mcts_schedule(
     int global_bests_len = 0;
 
     ProgressBar tick;
+    int cnt_random_decisions = 0;
+    int cnt_best_decisions = 0;
     for (int j = 0; j < mcts_depth-1; j++) {
         // Update the progress bar
         tick.set(double(j) / (mcts_depth-1));
@@ -1804,12 +1813,11 @@ IntrusivePtr<State> optimal_mcts_schedule(
             meta_uct.max_millis = max_millis;
             meta_uct.max_iterations = max_iterations;
             meta_uct.father_value = global_best_value;
-            meta_uct.randomize = i%2==0;
-
-            if (initialized)
-                meta_uct.use_father_value = false;
-
+	    meta_uct.randomize = i<mcts_num_random_trees;
+            if (initialized) meta_uct.use_father_value = false;
             bool valid = false;
+	    usleep(i+1);
+
             actions[i] = meta_uct.run(states[i],valid);
 
             // make sure actions[i] gets updated
@@ -1857,11 +1865,13 @@ IntrusivePtr<State> optimal_mcts_schedule(
             }
             //std::cout << "Pass " << i << " of " << num_passes << ", value: " << actions[i].value << std::endl;
         }
-
-        // real best action
-        //actions[idx].print();
-        std::cout << "best intermediate value " << best_value << std::endl;
-
+    		if (best_value > -11111111111){
+			if (idx >= mcts_num_random_trees) cnt_best_decisions++;
+		    	else cnt_random_decisions++;
+		}
+            // real best action
+            //actions[idx].print();
+            std::cout << "best intermediate value " << best_value << std::endl;
         // get the index of the best acton from the original vector of possible actions.
         int best_action_idx = actions[idx].index;
         // apply this action globally
@@ -1977,6 +1987,12 @@ IntrusivePtr<State> optimal_mcts_schedule(
     best = global_best_state;
 
     aslog(0) << "global best cost: " << -1*global_best_value << "\n";
+
+    std::cout << "JENNY_MINCOST: " << -1*global_best_value << "\n";
+    std::cout << "JENNY_EVALTIME: " << State::cost_calculations << '\n';
+
+    
+    std::cout << "num_best_decisions: " << cnt_best_decisions << "num_random_decisions: " << cnt_random_decisions <<std::endl;
 
     if (states[0].inner->num_decisions_made == 2 * (int)dags[0]->nodes.size() &&
         global_best_value<-1*best->cost){
