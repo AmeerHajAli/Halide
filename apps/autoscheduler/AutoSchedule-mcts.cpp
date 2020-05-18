@@ -71,6 +71,8 @@
 #include <sstream>
 #include <unordered_map>
 #include <unordered_set>
+#include <sys/wait.h> // for wait() 
+#include <unistd.h> // for fork() 
 
 //#include "mcts/IState.h"
 #include "mcts/ofxMSAmcts.h"
@@ -1746,10 +1748,12 @@ IntrusivePtr<State> optimal_mcts_schedule(
     //msa::mcts::UCT<State::WrapperState, State::Action> ucts[num_passes]; // Templated class. Builds a partial decision tree and searches it with UCT MCTS
     std::vector<State::WrapperState> states;
     std::vector<State::Action> actions;
+
     IntrusivePtr<State> global_best_state = nullptr;
     int global_dag_best_idx = 0;
     double global_best_value = 0;
     bool initialized = false;
+
     for(int i=0; i<num_passes; i++) {
         dags[i] = new FunctionDAG(outputs, params, target);
         cost_models[i] = make_default_cost_model(weights_in_path, weights_out_path, randomize_weights);
@@ -1760,16 +1764,32 @@ IntrusivePtr<State> optimal_mcts_schedule(
         states[i].inner->root = new LoopNest;
         actions.emplace_back(State::Action(State::ActionEnum::Illegal));//&State::Action(State::ActionEnum::Inline,0,0));
     }
+
     int mcts_depth = 2 * (int)dags[0]->nodes.size();
     std::cout << "mcts_depth " << mcts_depth << std::endl;
 
     bool done[num_passes] = { false };
 
+    static const string num_global_bests_str = get_env_variable("MCTS_NUM_TIMINGS");
+    static const int num_global_bests = num_global_bests_str.empty() ? 10 : std::atoi(num_global_bests_str.c_str());
+
+    static const string app_name = get_env_variable("MCTS_APP");
+    if (app_name.empty()) {
+        aslog(0) << "MCTS: app name must be specified\n";
+        exit(1);
+    }
+    static const string app_bin = app_name == "resnet_50_blockwise" ? "bin" : "bin/host";
+
+    int global_bests_idxs[num_global_bests];
+    double global_bests_values[num_global_bests];
+    IntrusivePtr<State> global_bests_ptrs[num_global_bests];
+    int global_bests_len = 0;
+
     ProgressBar tick;
     for (int j = 0; j < mcts_depth-1; j++) {
-            // Update the progress bar
+        // Update the progress bar
         tick.set(double(j) / (mcts_depth-1));
-        
+
         #pragma omp parallel for
         for (int i = 0; i < num_passes; i++) {
             //if (done[i]) continue;
@@ -1784,54 +1804,64 @@ IntrusivePtr<State> optimal_mcts_schedule(
             meta_uct.max_millis = max_millis;
             meta_uct.max_iterations = max_iterations;
             meta_uct.father_value = global_best_value;
-	    meta_uct.randomize = i%2==0;
-            if (initialized) meta_uct.use_father_value = false;
+            meta_uct.randomize = i%2==0;
+
+            if (initialized)
+                meta_uct.use_father_value = false;
+
             bool valid = false;
             actions[i] = meta_uct.run(states[i],valid);
+
             // make sure actions[i] gets updated
             assert(actions[i].ae !=State::ActionEnum::Illegal && "Got Illegal Action.");
             // make sure that it is not empty action constructed in TreeNode
             assert(actions[i].index !=-1 && "Got Empty TreeNode Action");
-            
+
             if (!valid) {
                 std::cout << "due to terminal action breaking at " << j << std::endl;
-//                assert(0 && "Error444: NULL ACTION!");
+                //assert(0 && "Error444: NULL ACTION!");
                 done[i] = true;
                 //continue;
             }
+
             // evaluate the best actions 
             //states[i].evaluate(actions[i].state);
             if (states[i].inner->num_decisions_made == 2 * (int)dags[i]->nodes.size()) {
-//                assert(0 && "Error: WTF HOW DID WE GET HERE");
+                //assert(0 && "Error: WTF HOW DID WE GET HERE");
                 std::cout << "breaking.. with num decisions made " <<states[i].inner->num_decisions_made << std::endl;
                 done[i] = true;
                 //continue;
             }
             //actions[i].print();
         }
+
         // break if done
         int cnt = 0;
         for(int i = 0; i < num_passes; ++i){
             if (done[i]) cnt++;
         }
+
         if(cnt == num_passes) break;
+
         assert(cnt == 0 && "Error2: WTF HOW DID WE GET HERE, all should be done or not");
-        
+
         // get the best action from all runs
         int idx = 0;
         double best_value = actions[0].value;
         //std::cout << "Pass " << 0 << " of " << num_passes << ", value: " << actions[0].value << std::endl;
+
         for (int i = 1; i <num_passes; i++) {
             if(best_value < actions[i].value) {
                 best_value = actions[i].value;
                 idx = i;
             }
-        //    std::cout << "Pass " << i << " of " << num_passes << ", value: " << actions[i].value << std::endl;
+            //std::cout << "Pass " << i << " of " << num_passes << ", value: " << actions[i].value << std::endl;
         }
-            // real best action
-            //actions[idx].print();
-            std::cout << "best intermediate value " << best_value << std::endl;
-    
+
+        // real best action
+        //actions[idx].print();
+        std::cout << "best intermediate value " << best_value << std::endl;
+
         // get the index of the best acton from the original vector of possible actions.
         int best_action_idx = actions[idx].index;
         // apply this action globally
@@ -1844,44 +1874,138 @@ IntrusivePtr<State> optimal_mcts_schedule(
             //vactions[best_action_idx].print();
             //std::cout << "num decisions made: " <<states[i].inner->num_decisions_made <<std::endl;
         }
-        
+
         //updating the global best
         if((global_best_value < best_value || !initialized) 
-          &&actions[idx].best_state_updated) {
-                global_best_value = best_value;
-                global_dag_best_idx = idx;
-                global_best_state = std::move(actions[idx].best_state);
-                initialized=true;
+          && actions[idx].best_state_updated) {
+            global_best_value = best_value;
+            global_dag_best_idx = idx;
+            // global_best_state = std::move(actions[idx].best_state);
+            initialized=true;
+        }
+
+        // Updating global best vector
+        if (best_value > -1.1111e+11) {
+            if (global_bests_len < num_global_bests) {
+                std::cout << "Adding a new one " << global_bests_len << ", idx: " << idx << std::endl;
+                global_bests_idxs[global_bests_len] = idx;
+                global_bests_values[global_bests_len] = best_value;
+                global_bests_ptrs[global_bests_len] = std::move(actions[idx].best_state);
+                global_bests_len++;
+            } else {
+                for (int i = 0; i < global_bests_len; i++) {
+                    if (best_value > global_bests_values[i]) {
+                        global_bests_idxs[i] = idx;
+                        global_bests_values[i] = best_value;
+                        global_bests_ptrs[i] = std::move(actions[idx].best_state);
+                        break;
+                    }
+                }
             }
+        }
+
         std::cout << "finished depth " << j << " best value so far "<< global_best_value << std::endl;
-    
+
         aslog(0) << "Cost evaluated this many times: " << State::cost_calculations << '\n';
     }
+
     tick.clear();
+
+    // Loop through and try out the different states
+    bool is_parent_process = true;
+
+    if (system("mkdir mcts_libs &> /dev/null")) {
+        aslog(0) << "Failed to create mcts_libs dir\n";
+    };
+    remove("mcts_libs/perf.txt");
+
+    for (int i = 0; i < global_bests_len; i++) {
+        global_dag_best_idx = global_bests_idxs[i];
+        global_best_state = global_bests_ptrs[i];
+        global_best_value = global_bests_values[i];
+
+        best = global_best_state;
+
+        pid_t pid = fork();
+
+        if (pid > 0) {
+            // Parent
+            printf("Parent waiting...\n");
+            wait(NULL);
+
+            // Run the benchmark
+            int err;
+            string build_rungen = "cp " + app_bin + "/" + app_name + "_auto_schedule.a mcts_libs/" + app_name + "_auto_schedule_" + std::to_string(i) + ".a; cd .. && ./build_rungen " + app_name;
+            err = system(build_rungen.c_str());
+            if (err) exit(err);
+
+            string cat = "cat " + app_bin + "/bench.txt >> mcts_libs/perf.txt";
+            err = system(cat.c_str());
+            if (err) exit(err);
+        } else {
+            // Child
+            is_parent_process = false;
+            break;
+        }
+    }
+
+    float global_bests_times[num_global_bests];
+    if (is_parent_process) {
+        std::ifstream perf_file("mcts_libs/perf.txt");
+        for (int i = 0; i < global_bests_len; i++) {
+            perf_file >> global_bests_times[i];
+        }
+        perf_file.close();
+
+        // Choose the best state
+        float global_best_time = 0;
+        bool global_best_time_initialized = false;
+        for (int i = 0; i < global_bests_len; i++) {
+            // if (global_best_value < global_bests_values[i] ||
+            if (global_best_time > global_bests_times[i] ||
+                    !global_best_time_initialized) {
+                global_dag_best_idx = global_bests_idxs[i];
+                global_best_state = std::move(global_bests_ptrs[i]);
+                global_best_time = global_bests_times[i];
+                global_best_value = global_bests_values[i];
+                global_best_time_initialized = true;
+            }
+        }
+    }
+
     //we are supposed to get to the same final result
     best = global_best_state;
+
     aslog(0) << "global best cost: " << -1*global_best_value << "\n";
-    
+
     if (states[0].inner->num_decisions_made == 2 * (int)dags[0]->nodes.size() &&
         global_best_value<-1*best->cost){
         states[0].evaluate();
         best = states[0].inner;
         aslog(0) << "Best final_state cost: " << best->cost << "\n";
-    }    
+    }
+
     //aslog(0) << "** global schedule " << global_best_state.get() << ":\n";
-    
+
     best->apply_schedule(*dags[global_dag_best_idx], params);
     //best->apply_schedule(*dags[0], params);
     //aslog(0) << "** applied schedule:\n";
-
 
     //delete dags[0];
     //for(auto z : dags) delete z;
     //outdag = dags[0];
     outdag = dags[global_dag_best_idx];
 
+    if (is_parent_process) {
+        aslog(0) << "final output (" << global_bests_len << ")\n";
+        for (int i = 0; i < global_bests_len; i++) {
+            aslog(0) << "  " << i << ": {" << global_bests_idxs[i] << ", " << global_bests_values[i] << ", " << global_bests_times[i] << "}\n";
+        }
+    }
+
     return best;
 }
+
 // Performance coarse-to-fine beam search and return the best state found.
 IntrusivePtr<State> optimal_schedule(FunctionDAG &dag,
                                      vector<Function> outputs,

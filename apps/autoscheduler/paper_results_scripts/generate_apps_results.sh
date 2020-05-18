@@ -70,6 +70,7 @@ elif [ "$autoscheduler" == "mcts" ]; then
     export HL_SEED=13
     export MCTS_MAX_MILLIS=30000
     export MCTS_MAX_ITERATIONS=10000
+    export MCTS_NUM_TIMINGS=10
     results="mcts"
 elif [ "$autoscheduler" == "master" ]; then
     # master
@@ -113,6 +114,8 @@ if [ "$APPS" != "" ]; then
     for app in ${APPS}; do
         echo "building $app (autoscheduler == $autoscheduler)" >> progress
 
+        export MCTS_APP="$app"
+
         if [ "$app" != "iir_blur" ] && [ "$app" != "harris" ] && [ "$app" != "unsharp" ] ; then
             make -C ${HALIDE}/apps/${app} build
         else
@@ -131,6 +134,8 @@ if [ "$APPS" != "" ]; then
     # benchmark everything
     for app in ${APPS}; do
         echo "running $app (autoscheduler == $autoscheduler)" >> progress
+
+        export MCTS_APP="$app"
 
         if [ "$RL_FIRST" != "false" ]; then
             echo > $results/$app.txt
