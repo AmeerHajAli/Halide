@@ -1271,7 +1271,8 @@ struct State {
     // user to copy-paste to freeze this schedule as permanent artifact.
     void apply_schedule(const FunctionDAG &dag, const MachineParams &params) {
         StageMap<std::unique_ptr<LoopNest::StageScheduleState>> state_map;
-        root->apply(LoopLevel::root(), state_map, params.parallelism, 0, nullptr, nullptr);
+        assert(root.get());
+	root->apply(LoopLevel::root(), state_map, params.parallelism, 0, nullptr, nullptr);
 
         std::ostringstream src;
 
@@ -1786,6 +1787,7 @@ IntrusivePtr<State> optimal_mcts_schedule(
             meta_uct.father_value = global_best_value;
             if (initialized) meta_uct.use_father_value = false;
             bool valid = false;
+	    states[i].cost_model = cost_models[i].get();
             actions[i] = meta_uct.run(states[i],valid);
             // make sure actions[i] gets updated
             assert(actions[i].ae !=State::ActionEnum::Illegal && "Got Illegal Action.");
@@ -1838,12 +1840,17 @@ IntrusivePtr<State> optimal_mcts_schedule(
         for (int i = 0; i < num_passes; i++) {
             std::vector<State::Action> vactions;
             states[i].get_actions(vactions);
-            states[i].apply_action(vactions[best_action_idx]);
-            //std::cout << "------" << std::endl;
+            
+	    /// NOT LEGAL
+	    states[i].apply_action(vactions[best_action_idx]);
+            
+	    //std::cout << "------" << std::endl;
             //vactions[best_action_idx].print();
             //std::cout << "num decisions made: " <<states[i].inner->num_decisions_made <<std::endl;
         }
-        
+       
+        printf("ran loop, initialized=%d\n", initialized);
+
         //updating the global best
         if((global_best_value < best_value || !initialized) 
           &&actions[idx].best_state_updated) {
@@ -1851,6 +1858,8 @@ IntrusivePtr<State> optimal_mcts_schedule(
                 global_dag_best_idx = idx;
                 global_best_state = std::move(actions[idx].best_state);
                 initialized=true;
+		printf("pushing new best state\n");
+		assert(global_best_state.get());
             }
         std::cout << "finished depth " << j << " best value so far "<< global_best_value << std::endl;
     
@@ -1858,6 +1867,7 @@ IntrusivePtr<State> optimal_mcts_schedule(
     }
     tick.clear();
     //we are supposed to get to the same final result
+    assert(global_best_state.get());
     best = global_best_state;
     aslog(0) << "global best cost: " << -1*global_best_value << "\n";
     
@@ -1868,7 +1878,7 @@ IntrusivePtr<State> optimal_mcts_schedule(
         aslog(0) << "Best final_state cost: " << best->cost << "\n";
     }    
     //aslog(0) << "** global schedule " << global_best_state.get() << ":\n";
-    
+    assert(best.get()); 
     best->apply_schedule(*dags[global_dag_best_idx], params);
     //best->apply_schedule(*dags[0], params);
     //aslog(0) << "** applied schedule:\n";

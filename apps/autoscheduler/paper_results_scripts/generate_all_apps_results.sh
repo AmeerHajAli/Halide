@@ -1,4 +1,4 @@
-autoschedulers="beam" #master greedy beam mcts"
+autoschedulers="mcts" #master greedy beam mcts"
 
 if [ $# -lt 1 ]; then
     weights=""

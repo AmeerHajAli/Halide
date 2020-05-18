@@ -13,7 +13,7 @@ HALIDE=$(dirname $0)/../../..
 echo "Using Halide in " $HALIDE
 
 # export CXX="ccache c++"
-export CXX="c++"
+export CXX="c++ -g"
 
 # Best single set of params for master on the benchmarking machine, found with grid search on the runtime pipelines
 # There are already baked into src/AutoSchedule.cpp as the default
@@ -102,7 +102,7 @@ fi
 
 #APPS="bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate_generator conv_layer mat_mul_generator iir_blur_generator resnet_50_blockwise bgu"
  
-APPS="bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate conv_layer mat_mul iir_blur bgu" # resnet_50_blockwise is handled by a special case at the end
+APPS="local_laplacian" # nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate conv_layer mat_mul iir_blur bgu" # resnet_50_blockwise is handled by a special case at the end
 
 benchmark_resnet="true"
 

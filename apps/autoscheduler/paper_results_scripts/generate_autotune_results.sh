@@ -12,7 +12,7 @@ HALIDE=$(dirname $0)/../../..
 echo "Using Halide in " $HALIDE
 
 # export CXX="ccache c++"
-export CXX="c++"
+export CXX="c++ -g"
 
 export HL_MACHINE_PARAMS=32,24000000,160
 export HL_PERMIT_FAILED_UNROLL=1
@@ -60,9 +60,9 @@ elif [ "$autoscheduler" == "mcts" ]; then
     fi
 
     # mcts
-    export HL_NUM_PASSES=20
-    export MCTS_MAX_MILLIS=5000
-    export MCTS_MAX_ITERATIONS=1000
+    export HL_NUM_PASSES=1
+    export MCTS_MAX_MILLIS=100
+    export MCTS_MAX_ITERATIONS=100
 elif [ "$autoscheduler" == "master" ]; then
     # master
     export HL_BEAM_SIZE=1
@@ -91,9 +91,7 @@ fi
 
 # APPS="resnet_50_blockwise bgu bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate_generator conv_layer mat_mul_generator iir_blur_generator"
 
-APPS="bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate conv_layer iir_blur bgu mat_mul" # Missing resnet_50_blockwise
-
-APPS="bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate conv_layer iir_blur bgu mat_mul" # Missing resnet_50_blockwise
+APPS="local_laplacian" #bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate conv_layer iir_blur bgu mat_mul" # Missing resnet_50_blockwise
 
 for app in $APPS; do
     echo "$app ($autoscheduler) (retrain=$RETRAIN)" >> autoprogress
