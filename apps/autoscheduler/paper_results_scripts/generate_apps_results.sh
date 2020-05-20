@@ -74,7 +74,7 @@ elif [ "$autoscheduler" == "beam" ]; then
     results="beam"
 elif [ "$autoscheduler" == "mcts" ]; then
     if diff ../AutoSchedule-mcts.cpp ../AutoSchedule.cpp > /dev/null ; then
-        echo "No need to copy AutoSchedule-master.cpp"
+        echo "No need to copy AutoSchedule-mcts.cpp"
     else
         cp ../AutoSchedule-mcts.cpp ../AutoSchedule.cpp
     fi
@@ -116,10 +116,7 @@ if [ "$autoscheduler" != "master" ]; then
     cd -
 fi
 
-#APPS="bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate_generator conv_layer mat_mul_generator iir_blur_generator resnet_50_blockwise bgu"
- 
 APPS="bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate conv_layer mat_mul iir_blur bgu" # resnet_50_blockwise is handled by a special case at the end
-
 
 benchmark_resnet="true"
 RANDOM_DUR=600
@@ -134,52 +131,65 @@ if [ "$APPS" != "" ]; then
 
         export MCTS_APP="$app"
 
-        if [ "$autoscheduler" == "random" ]; then
+        if [ "$RL_FIRST" != "false" ]; then
+            echo > $results/$app.evaltime.txt
+            echo > $results/$app.mincost.txt
             echo > $results/$app.randtime.txt
+            echo > $results/$app.runtime.txt
+            echo > $results/$app.log
+        fi
+
+
+        if [ "$autoscheduler" == "random" ]; then
             start=$SECONDS
             if [ "$app" != "iir_blur" ] && [ "$app" != "harris" ] && [ "$app" != "unsharp" ] ; then
-                make -C ${HALIDE}/apps/${app} build > $results/$app.log
+                make -C ${HALIDE}/apps/${app} build | tee $results/$app.log.$HL_SEED
             else
-                make -C ${HALIDE}/apps/${app} all > $results/$app.log
+                make -C ${HALIDE}/apps/${app} all | tee $results/$app.log.$HL_SEED
             fi
-
-            grep 'JENNY_EVALTIME' $results/$app.log > $results/$app.evaltime.txt 
-            grep 'JENNY_MINCOST' $results/$app.log > $results/$app.mincost.txt 
             duration=$(( SECONDS - start ))
             total_duration=$duration
+
+            grep 'JENNY_EVALTIME' $results/$app.log.$HL_SEED >> $results/$app.evaltime.txt 
+            grep 'JENNY_MINCOST' $results/$app.log.$HL_SEED >> $results/$app.mincost.txt 
+
+            echo "TOTAL_DUR: $total_duration"
+            echo "$app $total_duration" >> $results/$app.runtime.txt
+
             make -C ${HALIDE}/apps/${app} test &>> $results/$app.randtime.txt
             while [ $total_duration -lt $RANDOM_DUR ]; do
                 make -C ${HALIDE}/apps/${app} clean
                 start=$SECONDS
                 if [ "$app" != "iir_blur" ] && [ "$app" != "harris" ] && [ "$app" != "unsharp" ] ; then
-                    make -C ${HALIDE}/apps/${app} build > $results/$app.log
+                    make -C ${HALIDE}/apps/${app} build | tee $results/$app.log.$HL_SEED
                 else
-                    make -C ${HALIDE}/apps/${app} all > $results/$app.log
+                    make -C ${HALIDE}/apps/${app} all | tee $results/$app.log.$HL_SEED
                 fi
-
-                grep 'JENNY_EVALTIME' $results/$app.log >> $results/$app.evaltime.txt 
-                grep 'JENNY_MINCOST' $results/$app.log >> $results/$app.mincost.txt 
-               
                 duration=$(( SECONDS - start ))
                 total_duration=$((total_duration + duration))
+
+                grep 'JENNY_EVALTIME' $results/$app.log.$HL_SEED >> $results/$app.evaltime.txt 
+                grep 'JENNY_MINCOST' $results/$app.log.$HL_SEED >> $results/$app.mincost.txt 
+
                 echo "TOTAL_DUR: $total_duration"
-                echo "$app $total_duration" > $results/$app.runtime.txt
+                echo "$app $total_duration" >> $results/$app.runtime.txt
 
                 make -C ${HALIDE}/apps/${app} test &>> $results/$app.randtime.txt
             done
         else
             start=$SECONDS
             if [ "$app" != "iir_blur" ] && [ "$app" != "harris" ] && [ "$app" != "unsharp" ] ; then
-                make -C ${HALIDE}/apps/${app} build > $results/$app.log
+                make -C ${HALIDE}/apps/${app} build | tee $results/$app.log.$HL_SEED
             else
-                make -C ${HALIDE}/apps/${app} all > $results/$app.log
+                make -C ${HALIDE}/apps/${app} all | tee $results/$app.log.$HL_SEED
             fi
-
-            grep 'JENNY_EVALTIME' $results/$app.log > $results/$app.evaltime.txt 
-            grep 'JENNY_MINCOST' $results/$app.log > $results/$app.mincost.txt 
-
             duration=$(( SECONDS - start ))
-            echo "$app $duration" > $results/$app.runtime.txt
+
+            grep 'JENNY_EVALTIME' $results/$app.log.$HL_SEED >> $results/$app.evaltime.txt 
+            grep 'JENNY_MINCOST' $results/$app.log.$HL_SEED >> $results/$app.mincost.txt 
+
+            echo "TOTAL_DUR: $duration"
+            echo "$app $duration" >> $results/$app.runtime.txt
         fi
 
         if [ $? -ne 0 ]; then
@@ -187,6 +197,12 @@ if [ "$APPS" != "" ]; then
             echo "Failed to build $app (autoscheduler == $autoscheduler)" >> errors
             # exit 1
         fi
+
+        cat $results/$app.log.$HL_SEED >> $results/$app.log
+        printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.evaltime.txt
+        printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.mincost.txt
+        printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.randtime.txt
+        printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.runtime.txt
     done
 
 
@@ -225,47 +241,58 @@ if [ "$benchmark_resnet" == "true" ]; then
     if [ "$autoscheduler" != "mcts" ]; then
         cores=$(nproc)
     else
-        cores=2
+        cores=1
+    fi
+    if [ "$RL_FIRST" != "false" ]; then
+        echo > $results/$app.evaltime.txt
+        echo > $results/$app.mincost.txt
+        echo > $results/$app.randtime.txt
+        echo > $results/$app.runtime.txt
+        echo > $results/$app.log
     fi
 
+
     if [ "$autoscheduler" == "random" ]; then
-        echo > $results/$app.randtime.txt
         start=$SECONDS
-        make -C ${HALIDE}/apps/${app} all > $results/$app.log
-
-        grep 'JENNY_EVALTIME' $results/$app.log > $results/$app.evaltime.txt 
-        grep 'JENNY_MINCOST' $results/$app.log > $results/$app.mincost.txt 
-
+        make -C ${HALIDE}/apps/${app} all | tee $results/$app.log.$HL_SEED
         duration=$(( SECONDS - start ))
         total_duration=$duration
+
+        grep 'JENNY_EVALTIME' $results/$app.log.$HL_SEED >> $results/$app.evaltime.txt 
+        grep 'JENNY_MINCOST' $results/$app.log.$HL_SEED >> $results/$app.mincost.txt 
+
+        echo "TOTAL_DUR: $total_duration"
+        echo "$app $total_duration" >> $results/$app.runtime.txt
+
         #make -C ${HALIDE}/apps/${app} test_manual &>> $results/$app.randtime.txt
         make -C ${HALIDE}/apps/${app} test_auto_schedule &>> $results/$app.randtime.txt
 
         while [ $total_duration -lt $RANDOM_DUR ]; do
             make -C ${HALIDE}/apps/${app} clean
             start=$SECONDS
-            make -C ${HALIDE}/apps/${app} all > $results/$app.log
-
-            grep 'JENNY_EVALTIME' $results/$app.log >> $results/$app.evaltime.txt 
-            grep 'JENNY_MINCOST' $results/$app.log >> $results/$app.mincost.txt 
-           
+            make -C ${HALIDE}/apps/${app} all | tee $results/$app.log.$HL_SEED           
             duration=$(( SECONDS - start ))
             total_duration=$((total_duration + duration))
+
+            grep 'JENNY_EVALTIME' $results/$app.log.$HL_SEED >> $results/$app.evaltime.txt 
+            grep 'JENNY_MINCOST' $results/$app.log.$HL_SEED >> $results/$app.mincost.txt 
+
             echo "TOTAL_DUR: $total_duration"
-            echo "$app $total_duration" > $results/$app.runtime.txt
+            echo "$app $total_duration" >> $results/$app.runtime.txt
 
             #make -C ${HALIDE}/apps/${app} test_manual &>> $results/$app.randtime.txt
             make -C ${HALIDE}/apps/${app} test_auto_schedule &>> $results/$app.randtime.txt
         done
     else 
         start=$SECONDS
-        make -C ${HALIDE}/apps/${app} all -j${cores} > $results/$app.log
-
-        grep 'JENNY_EVALTIME' $results/$app.log > $results/$app.evaltime.txt 
-        grep 'JENNY_MINCOST' $results/$app.log > $results/$app.mincost.txt 
-
+        make -C ${HALIDE}/apps/${app} all -j${cores} | tee $results/$app.log.$HL_SEED
         duration=$(( SECONDS - start ))
-        echo "$app $duration" > $results/$app.runtime.txt
+
+        grep 'JENNY_EVALTIME' $results/$app.log.$HL_SEED >> $results/$app.evaltime.txt 
+        grep 'JENNY_MINCOST' $results/$app.log.$HL_SEED >> $results/$app.mincost.txt 
+
+        echo "TOTAL_DUR: $duration"
+        echo "$app $duration" >> $results/$app.runtime.txt
     fi
 
     echo "running $app (autoscheduler == $autoscheduler)" >> progress
@@ -283,5 +310,11 @@ if [ "$benchmark_resnet" == "true" ]; then
         make -C ${HALIDE}/apps/${app} test_auto_schedule &>> $results/$app.txt
     fi
 
+    cat $results/$app.log.$HL_SEED >> $results/$app.log
     printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.txt
+    printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.evaltime.txt
+    printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.mincost.txt
+    printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.randtime.txt
+    printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.runtime.tx
+
 fi
