@@ -3,6 +3,8 @@
 app="$1"
 idx="$2"
 
+HALIDE_HOME="$PWD/.."
+
 if [ $# -ne 2 ]; then
     echo not enough args
     exit 1
@@ -47,7 +49,7 @@ if [ "$app" == "camera_pipe" ]; then
     fi
 
     # Build autoscheduled schedule
-    g++ -O3 -std=c++11 -I /scratch/hngenc/Halide/distrib/include/ -I /scratch/hngenc/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Wall -Ibin/host process.cpp bin/host/camera_pipe.a mcts_libs/camera_pipe_auto_schedule_${idx}.a -o mcts_libs/bench_${idx} -lpng12  -ljpeg -I/usr/include/libpng12 -I/usr/include/libpng12/..  -ldl -lpthread -lz
+    g++ -O3 -std=c++11 -I ${HALIDE_HOME}/distrib/include/ -I ${HALIDE_HOME}/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Wall -Ibin/host process.cpp bin/host/camera_pipe.a mcts_libs/camera_pipe_auto_schedule_${idx}.a -o mcts_libs/bench_${idx} $(libpng-config --ldflags) -ljpeg $(libpng-config --cflags) $(libpng-config --cflags)/..  -ldl -lpthread -lz
 
 elif [ "$app" == "harris" ]; then
 
@@ -62,7 +64,7 @@ elif [ "$app" == "harris" ]; then
     fi
 
     # Build autoscheduled schedule
-    g++ -O3 -std=c++11 -I /scratch/hngenc/Halide/distrib/include/ -I /scratch/hngenc/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/harris.a mcts_libs/harris_auto_schedule_${idx}.a bin/host/runtime.a -o mcts_libs/bench_${idx}  -ldl -lpthread -lz -lpng12  -ljpeg -I/usr/include/libpng12 -I/usr/include/libpng12/..   
+    g++ -O3 -std=c++11 -I ${HALIDE_HOME}/distrib/include/ -I ${HALIDE_HOME}/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/harris.a mcts_libs/harris_auto_schedule_${idx}.a bin/host/runtime.a -o mcts_libs/bench_${idx}  -ldl -lpthread -lz $(libpng-config --ldflags) -ljpeg $(libpng-config --cflags) $(libpng-config --cflags)/..
 
 elif [ "$app" == "bgu" ]; then
 
@@ -76,7 +78,7 @@ elif [ "$app" == "bgu" ]; then
         bin/host/bgu.generator -r runtime -o bin/host target=host
     fi
 
-    g++ -O3 -std=c++11 -I /scratch/hngenc/Halide/distrib/include/ -I /scratch/hngenc/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/bgu.a mcts_libs/bgu_auto_schedule_${idx}.a bin/host/runtime.a -o mcts_libs/bench_${idx} -ldl -lpthread -lz -lpng12  -ljpeg -I/usr/include/libpng12 -I/usr/include/libpng12/..   
+    g++ -O3 -std=c++11 -I ${HALIDE_HOME}/distrib/include/ -I ${HALIDE_HOME}/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/bgu.a mcts_libs/bgu_auto_schedule_${idx}.a bin/host/runtime.a -o mcts_libs/bench_${idx} -ldl -lpthread -lz $(libpng-config --ldflags) -ljpeg $(libpng-config --cflags) $(libpng-config --cflags)/..
 
 else
     echo unknown app, can\'t build
