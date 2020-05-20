@@ -1684,6 +1684,144 @@ IntrusivePtr<State> optimal_schedule_pass(FunctionDAG &dag,
     }
 }
 
+// From https://stackoverflow.com/a/478960
+static std::string proc_exec(const char* cmd) {
+    char buffer[128];
+    std::string result = "";
+    FILE* pipe = popen(cmd, "r");
+    if (!pipe) throw std::runtime_error("popen() failed!");
+    try {
+        while (fgets(buffer, sizeof buffer, pipe) != NULL) {
+            result += buffer;
+        }
+    } catch (...) {
+        pclose(pipe);
+        throw;
+    }
+    pclose(pipe);
+    return result;
+}
+
+// NOT THREADSAFE
+// Returns true if process is parent, false otherwise
+static bool make_static_library(const string& app_name, const string& app_bin, int id) {
+
+    pid_t pid = fork();
+    bool is_parent = pid != 0;
+
+    if (is_parent) {
+        auto start = std::chrono::high_resolution_clock::now();
+        wait(NULL);
+        auto stop = std::chrono::high_resolution_clock::now();
+
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // aslog(0) << "HASAN time taken to return from child with library: " << duration.count() << "\n";
+
+        start = std::chrono::high_resolution_clock::now();
+        const string copy = "cp " + app_bin + "/" + app_name + "_auto_schedule.a mcts_libs/" + app_name + "_auto_schedule_" + std::to_string(id) + ".a";
+        proc_exec(copy.c_str());
+        stop = std::chrono::high_resolution_clock::now();
+
+        duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // aslog(0) << "HASAN time taken to copy library: " << duration.count() << "\n";
+    }
+
+    return is_parent;
+}
+
+// After running this command, we must wait(NULL) to wait for children to complete
+static void make_benchmark(const string& app_name, int id) {
+
+    pid_t pid = fork();
+    bool is_parent = pid != 0;
+
+    if (!is_parent) {
+        auto start = std::chrono::high_resolution_clock::now();
+        const string build_rungen = "cd .. && ./build_rungen " + app_name + " " + std::to_string(id);
+        proc_exec(build_rungen.c_str());
+        auto stop = std::chrono::high_resolution_clock::now();
+
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // aslog(0) << "HASAN time taken to build benchmark: " << duration.count() << "\n";
+
+        exit(0);
+    }
+}
+
+static double run_benchmark(const string& app_name, int id) {
+    auto start = std::chrono::high_resolution_clock::now();
+    const string run_rungen = "cd .. && ./run_rungen " + app_name + " " + std::to_string(id);
+    proc_exec(run_rungen.c_str());
+    auto stop = std::chrono::high_resolution_clock::now();
+
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+    // aslog(0) << "HASAN time taken to run: " << duration.count() << "\n";
+
+    start = std::chrono::high_resolution_clock::now();
+    const string cat = "cat mcts_libs/bench_" + std::to_string(id) + ".txt";
+    string result = proc_exec(cat.c_str());
+    stop = std::chrono::high_resolution_clock::now();
+
+    duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+    // aslog(0) << "HASAN time taken to cat: " << duration.count() << "\n";
+
+    double d = atof(result.c_str());
+    return d > 0 ? d : 22222222222.0;
+}
+
+/*
+// NOT THREADSAFE
+static double run_benchmark_original(const string& app_name, const string& app_bin, bool * is_parent) {
+
+    pid_t pid = fork();
+    *is_parent = pid != 0;
+
+    if (pid == 0) {
+        // Child
+        return 0.0;
+    } else {
+        // Parent
+        // return 0.0;
+
+        // aslog(0) << "HASAN Parent waiting for pid " << pid << "\n";
+        auto start = std::chrono::high_resolution_clock::now();
+        wait(NULL);
+        auto stop = std::chrono::high_resolution_clock::now();
+        // aslog(0) << "HASAN Child with pid " << pid << " finished\n";
+
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // aslog(0) << "HASAN time taken for child to return: " << duration.count() << "\n";
+
+        // Run the benchmark
+        start = std::chrono::high_resolution_clock::now();
+        const string build_rungen = "cd .. && ./build_rungen " + app_name;
+        proc_exec(build_rungen.c_str());
+        stop = std::chrono::high_resolution_clock::now();
+
+        duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // aslog(0) << "HASAN time taken to build: " << duration.count() << "\n";
+
+        start = std::chrono::high_resolution_clock::now();
+        const string run_rungen = "cd .. && ./run_rungen " + app_name;
+        proc_exec(run_rungen.c_str());
+        stop = std::chrono::high_resolution_clock::now();
+
+        duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // aslog(0) << "HASAN time taken to run: " << duration.count() << "\n";
+
+        start = std::chrono::high_resolution_clock::now();
+        const string cat = "cat mcts_libs/bench_" + std::to_string(idx) + ".txt";
+        string result = proc_exec(cat.c_str());
+        stop = std::chrono::high_resolution_clock::now();
+
+        duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // aslog(0) << "HASAN time taken to cat: " << duration.count() << "\n";
+
+        return atof(result.c_str());
+    }
+}
+*/
+
 IntrusivePtr<State> optimal_mcts_schedule(
                                      const std::vector<Function> &outputs, const MachineParams &params, const Target &target,
                                      std::string weights_in_path, std::string weights_out_path, bool randomize_weights,
@@ -1757,7 +1895,7 @@ IntrusivePtr<State> optimal_mcts_schedule(
     IntrusivePtr<State> global_best_state = nullptr;
     int global_dag_best_idx = 0;
     double global_best_value = 0;
-    bool initialized = false;
+    // bool initialized = false;
 
     for(int i=0; i<num_passes; i++) {
         dags[i] = new FunctionDAG(outputs, params, target);
@@ -1787,6 +1925,12 @@ IntrusivePtr<State> optimal_mcts_schedule(
     }
     static const string app_bin = app_name == "resnet_50_blockwise" ? "bin" : "bin/host";
 
+    bool is_parent_process = true;
+
+    if (system("mkdir mcts_libs &> /dev/null")) {
+        aslog(0) << "mcts_libs dir already exists\n";
+    };
+
     int global_bests_idxs[num_global_bests];
     double global_bests_values[num_global_bests];
     IntrusivePtr<State> global_bests_ptrs[num_global_bests];
@@ -1812,11 +1956,11 @@ IntrusivePtr<State> optimal_mcts_schedule(
             meta_uct.uct_k = uct_k;//*uct_factor; 
             meta_uct.max_millis = max_millis;
             meta_uct.max_iterations = max_iterations;
-            meta_uct.father_value = global_best_value;
-	    meta_uct.randomize = i<mcts_num_random_trees;
-            if (initialized) meta_uct.use_father_value = false;
+            // meta_uct.father_value = global_best_value;
+            meta_uct.randomize = i<mcts_num_random_trees;
+            // if (initialized) meta_uct.use_father_value = false;
             bool valid = false;
-	    usleep(i+1);
+            // usleep(i+1);
 
             actions[i] = meta_uct.run(states[i],valid);
 
@@ -1855,23 +1999,115 @@ IntrusivePtr<State> optimal_mcts_schedule(
 
         // get the best action from all runs
         int idx = 0;
-        double best_value = actions[0].value;
+        // double best_value = actions[0].value;
+        double best_value = -111111111111;
         //std::cout << "Pass " << 0 << " of " << num_passes << ", value: " << actions[0].value << std::endl;
 
-        for (int i = 1; i <num_passes; i++) {
+        // Build .a files
+        for (int i = 0; i < num_passes; i++) {
+            if (actions[i].best_state_updated) {
+                is_parent_process = make_static_library(app_name, app_bin, i);
+                // usleep(3000000);
+
+                if (is_parent_process) {
+                    /*
+                    int status;
+
+                    pid_t result = waitpid(-1, &status, WNOHANG);
+                    if (result == 0) {
+                      // Child still alive
+                      aslog(0) << "HASAN CHILD STILL ALIVE\n";
+                      exit(1);
+                    } else if (result == -1) {
+                      // Error 
+                      aslog(0) << "HASAN CHILD ERRORED OUT\n";
+                    } else {
+                      // Child exited
+                      aslog(0) << "HASAN CHILD EXITED PROPERLY\n";
+                    }
+                    */
+                } else if (!is_parent_process) {
+                    global_best_value = actions[i].value;
+                    global_dag_best_idx = i;
+                    global_best_state = std::move(actions[i].best_state);
+                    break;
+                }
+            }
+        }
+
+        if (!is_parent_process)
+            break;
+
+        for (int i = 0; i < num_passes; i++) {
+            if (actions[i].best_state_updated) {
+                // Build the bench_x programs
+                make_benchmark(app_name, i);
+            }
+        }
+
+        // Wait for all bench_x programs to finish being built
+        while (wait(NULL) > 0) {}
+        //     aslog(0) << "HASAN: One child returned\n";
+        // }
+        // aslog(0) << "HASAN: All children returned\n";
+
+        // Benchmarks all programs
+        double best_runtime = 0;
+        // double best_runtime_id = 0;
+        // double best_runtime_value = -111111111111;
+        bool best_runtime_initialized = false;
+
+        for (int i = 0; i < num_passes; i++) {
+            if (actions[i].best_state_updated) {
+                double runtime = run_benchmark(app_name, i);
+
+                if (runtime == 0) {
+                    aslog(0) << "Error, runtime can't be 0\n";
+                    exit(1);
+                }
+
+                /*
+                if (runtime < best_runtime || !best_runtime_initialized) {
+                    best_runtime = runtime;
+                    best_runtime_id = i;
+                    best_runtime_value = actions[i].value;
+                }
+                */
+
+                // if (best_value < actions[i].value || !best_runtime_initialized) {
+                if (runtime < best_runtime || !best_runtime_initialized) {
+                    best_runtime = runtime;
+                    // best_runtime_id = i;
+                    // best_runtime_value = actions[i].value;
+
+                    best_value = actions[i].value;
+                    idx = i;
+                    best_runtime_initialized = true;
+                }
+            }
+        }
+
+        // aslog(0) << "HASAN: idx=" << idx << " best_runtime_id=" << best_runtime_id << " best_runtime=" << best_runtime << " best_runtime_initialized=" << best_runtime_initialized << " best_runtime_value=" << best_runtime_value << " best_value=" << best_value << "\n";
+
+        /*
+        for (int i = 1; i < num_passes; i++) {
             if(best_value < actions[i].value) {
                 best_value = actions[i].value;
                 idx = i;
             }
             //std::cout << "Pass " << i << " of " << num_passes << ", value: " << actions[i].value << std::endl;
         }
-    		if (best_value > -11111111111){
+        */
+
+        // if (best_value > -111111111111){
+        if (best_runtime_initialized){
 			if (idx >= mcts_num_random_trees) cnt_best_decisions++;
-		    	else cnt_random_decisions++;
+            else cnt_random_decisions++;
 		}
-            // real best action
-            //actions[idx].print();
-            std::cout << "best intermediate value " << best_value << std::endl;
+
+        // real best action
+        //actions[idx].print();
+        std::cout << "best intermediate value " << best_value << std::endl;
         // get the index of the best acton from the original vector of possible actions.
         int best_action_idx = actions[idx].index;
         // apply this action globally
@@ -1885,19 +2121,21 @@ IntrusivePtr<State> optimal_mcts_schedule(
             //std::cout << "num decisions made: " <<states[i].inner->num_decisions_made <<std::endl;
         }
 
+        /*
         //updating the global best
-        if((global_best_value < best_value || !initialized) 
+        if((global_best_value < best_value || !initialized)
           && actions[idx].best_state_updated) {
             global_best_value = best_value;
-            global_dag_best_idx = idx;
+            // global_dag_best_idx = idx;
             // global_best_state = std::move(actions[idx].best_state);
             initialized=true;
         }
+        */
 
         // Updating global best vector
-        if (best_value > -1.1111e+11) {
+        if (best_runtime_initialized && best_value > -111111111111) {
             if (global_bests_len < num_global_bests) {
-                std::cout << "Adding a new one " << global_bests_len << ", idx: " << idx << std::endl;
+                aslog(0) << "Adding a new one " << global_bests_len << ", idx: " << idx << "\n";
                 global_bests_idxs[global_bests_len] = idx;
                 global_bests_values[global_bests_len] = best_value;
                 global_bests_ptrs[global_bests_len] = std::move(actions[idx].best_state);
@@ -1921,45 +2159,38 @@ IntrusivePtr<State> optimal_mcts_schedule(
 
     tick.clear();
 
+    float global_bests_times[num_global_bests];
+
     // Loop through and try out the different states
-    bool is_parent_process = true;
+    if (is_parent_process) { 
+        aslog(0) << "HNG: global_bests_len: " << global_bests_len << "\n";
 
-    if (system("mkdir mcts_libs &> /dev/null")) {
-        aslog(0) << "Failed to create mcts_libs dir\n";
-    };
-    remove("mcts_libs/perf.txt");
+        remove("mcts_libs/perf.txt");
 
-    for (int i = 0; i < global_bests_len; i++) {
-        global_dag_best_idx = global_bests_idxs[i];
-        global_best_state = global_bests_ptrs[i];
-        global_best_value = global_bests_values[i];
+        for (int i = 0; i < global_bests_len; i++) {
+            global_dag_best_idx = global_bests_idxs[i];
+            global_best_state = global_bests_ptrs[i];
+            global_best_value = global_bests_values[i];
 
-        best = global_best_state;
+            best = global_best_state;
 
-        pid_t pid = fork();
+            is_parent_process = make_static_library(app_name, app_bin, i);
 
-        if (pid > 0) {
-            // Parent
-            printf("Parent waiting...\n");
-            wait(NULL);
+            if (is_parent_process) {
+                make_benchmark(app_name, i);
+                wait(NULL);
 
-            // Run the benchmark
-            int err;
-            string build_rungen = "cp " + app_bin + "/" + app_name + "_auto_schedule.a mcts_libs/" + app_name + "_auto_schedule_" + std::to_string(i) + ".a; cd .. && ./build_rungen " + app_name;
-            err = system(build_rungen.c_str());
-            if (err) exit(err);
+                run_benchmark(app_name, i);
 
-            string cat = "cat " + app_bin + "/bench.txt >> mcts_libs/perf.txt";
-            err = system(cat.c_str());
-            if (err) exit(err);
-        } else {
-            // Child
-            is_parent_process = false;
-            break;
+                string cat = "cat mcts_libs/bench_" + std::to_string(i) + ".txt >> mcts_libs/perf.txt";
+                int err = system(cat.c_str());
+                if (err) exit(err);
+            } else {
+                break;
+            }
         }
     }
 
-    float global_bests_times[num_global_bests];
     if (is_parent_process) {
         std::ifstream perf_file("mcts_libs/perf.txt");
         for (int i = 0; i < global_bests_len; i++) {
@@ -1990,14 +2221,16 @@ IntrusivePtr<State> optimal_mcts_schedule(
 
     std::cout << "JENNY_MINCOST: " << -1*global_best_value << "\n";
     std::cout << "JENNY_EVALTIME: " << State::cost_calculations << '\n';
-
     
     std::cout << "num_best_decisions: " << cnt_best_decisions << "num_random_decisions: " << cnt_random_decisions <<std::endl;
 
     if (states[0].inner->num_decisions_made == 2 * (int)dags[0]->nodes.size() &&
         global_best_value<-1*best->cost){
+        
         states[0].evaluate();
+
         best = states[0].inner;
+
         aslog(0) << "Best final_state cost: " << best->cost << "\n";
     }
 

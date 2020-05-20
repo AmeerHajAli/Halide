@@ -1,0 +1,66 @@
+#!/bin/bash
+
+app="$1"
+idx="$2"
+
+if [ $# -ne 2 ]; then
+    echo not enough args
+    exit 1
+fi
+
+bin="${app}/bin/host"
+if [ "$app" == "resnet_50_blockwise" ]; then
+    bin="${app}/bin"
+fi
+
+HALIDE_DISTRIB_PATH="$PWD/../distrib"
+D="$bin"
+
+WEIGHTS="$PWD/autoscheduler/baseline.weights"
+GENERATOR="$bin/${app}.generator"
+PIPELINE=${app}
+AUTOSCHED_BIN="$PWD/autoscheduler/bin"
+HL_TARGET="host"
+FNAME="${app}_auto_schedule"
+REGCPP="${FNAME}.registration.cpp"
+
+TIMEOUT_CMD="timeout"
+if [ $(uname -s) = "Darwin" ] && ! which $TIMEOUT_CMD 2>&1 >/dev/null; then
+    # OSX doesn't have timeout; gtimeout is equivalent and available via Homebrew
+    TIMEOUT_CMD="gtimeout"
+    if ! which $TIMEOUT_CMD 2>&1 >/dev/null; then
+        echo "Can't find the command 'gtimeout'. Run 'brew install coreutils' to install it."
+        exit 1
+    fi
+fi
+
+COMPILATION_TIMEOUT=600s
+BENCHMARKING_TIMEOUT=60s
+
+cd $app
+
+if [ "$app" == "camera_pipe" ]; then
+    mcts_libs/bench_${idx} ../images/bayer_raw.png 3700 2.0 50 1.0 5 bin/host/out.png bin/host/h_auto.png \
+        2> mcts_libs/bench_${idx}.tmp.txt \
+        || echo "Special benchmarking failed or timed out for ${app}"
+
+elif [ "$app" == "harris" ]; then
+
+    mcts_libs/bench_${idx} ../images/rgba.png bin/host/out.png \
+        > mcts_libs/bench_${idx}.tmp.txt \
+        || echo "Special benchmarking failed or timed out for ${app}"
+
+elif [ "$app" == "bgu" ]; then
+
+    mcts_libs/bench_${idx} ../images/rgb.png bin/host/out.png \
+        > mcts_libs/bench_${idx}.tmp.txt \
+        || echo "Special benchmarking failed or timed out for ${app}"
+
+else
+    echo unknown app, can\'t build
+    exit 1
+fi
+
+grep "Auto-scheduled time:\s*" mcts_libs/bench_${idx}.tmp.txt \
+    | sed 's/^Auto-scheduled time:\s*\(\S*\).s.*/\1/' > mcts_libs/bench_${idx}.txt
+

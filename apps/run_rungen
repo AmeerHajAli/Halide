@@ -9,7 +9,7 @@ if [ $# -ne 2 ]; then
 fi
 
 if [ "$app" == "camera_pipe" ] || [ "$app" == "harris" ] || [ "$app" == "bgu" ]; then
-    ./build_filter "$app" "$idx"
+    ./run_filter "$app" "$idx"
     exit $?
 fi
 
@@ -40,29 +40,15 @@ if [ $(uname -s) = "Darwin" ] && ! which $TIMEOUT_CMD 2>&1 >/dev/null; then
 fi
 
 COMPILATION_TIMEOUT=600s
-BENCHMARKING_TIMEOUT=60s
+BENCHMARKING_TIMEOUT=300s
 
-if [ ! -f ${D}/halide_runtime.o ]; then
-    HL_SEED=${SEED} \
-        HL_WEIGHTS_DIR=${WEIGHTS} \
-        HL_MACHINE_PARAMS=32,24000000,40 \
-        ${TIMEOUT_CMD} -k ${COMPILATION_TIMEOUT} ${COMPILATION_TIMEOUT} \
-        ${GENERATOR} \
-        -r halide_runtime \
-        -o ${D} \
-        -e o \
-        target=${HL_TARGET} \
-          &> ${D}/runtime_compile_log.txt || echo "Runtime compilation failed or timed out for ${D}"
-fi
-
-c++ \
-    -std=c++11 \
-    -I ${HALIDE_DISTRIB_PATH}/include \
-    ${HALIDE_DISTRIB_PATH}/tools/RunGenMain.cpp \
-    ${D}/${REGCPP} \
-    ${app}/mcts_libs/${FNAME}_${idx}.a \
-    ${D}/halide_runtime.o \
-    -o ${app}/mcts_libs/bench_$idx \
-    -DHALIDE_NO_PNG -DHALIDE_NO_JPEG \
-    -ldl -lpthread
+HL_NUM_THREADS=32 \
+    ${TIMEOUT_CMD} -k ${BENCHMARKING_TIMEOUT} ${BENCHMARKING_TIMEOUT} \
+    ${app}/mcts_libs/bench_$idx \
+    --estimate_all \
+    --benchmarks=all \
+    $output_extents \
+        | grep "^Benchmark for " \
+        | sed 's/^Benchmark for '${FNAME}' produces best case of \(\S*\).*/\1/' \
+        > ${app}/mcts_libs/bench_${idx}.txt || echo "Benchmarking failed or timed out for ${D}"
 
