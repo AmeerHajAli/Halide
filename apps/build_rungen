@@ -2,8 +2,9 @@
 
 app="$1"
 idx="$2"
+block="$3"
 
-if [ $# -ne 2 ]; then
+if [ $# -lt 2 ]; then
     echo not enough args
     exit 1
 fi
@@ -23,11 +24,18 @@ D="$bin"
 
 WEIGHTS="$PWD/autoscheduler/baseline.weights"
 GENERATOR="$bin/${app}.generator"
-PIPELINE=${app}
-AUTOSCHED_BIN="$PWD/autoscheduler/bin"
 HL_TARGET="host"
 FNAME="${app}_auto_schedule"
+RUNTIME="${D}/halide_runtime.o"
+
+if [ "$app" == "resnet_50_blockwise" ]; then
+    GENERATOR="$bin/bin/resnet50block.generator"
+    FNAME="resnet50block_auto_schedule${block}"
+    RUNTIME=""
+fi
+
 REGCPP="${FNAME}.registration.cpp"
+BENCH="bench${block}_${idx}"
 
 TIMEOUT_CMD="timeout"
 if [ $(uname -s) = "Darwin" ] && ! which $TIMEOUT_CMD 2>&1 >/dev/null; then
@@ -42,7 +50,7 @@ fi
 COMPILATION_TIMEOUT=600s
 BENCHMARKING_TIMEOUT=60s
 
-if [ ! -f ${D}/halide_runtime.o ]; then
+if [ "$RUNTIME" != "" ] && [ ! -f ${D}/halide_runtime.o ]; then
     HL_SEED=${SEED} \
         HL_WEIGHTS_DIR=${WEIGHTS} \
         HL_MACHINE_PARAMS=32,24000000,40 \
@@ -60,9 +68,8 @@ c++ \
     -I ${HALIDE_DISTRIB_PATH}/include \
     ${HALIDE_DISTRIB_PATH}/tools/RunGenMain.cpp \
     ${D}/${REGCPP} \
-    ${app}/mcts_libs/${FNAME}_${idx}.a \
-    ${D}/halide_runtime.o \
-    -o ${app}/mcts_libs/bench_$idx \
+    ${app}/mcts_libs/${FNAME}_${idx}.a $RUNTIME \
+    -o ${app}/mcts_libs/$BENCH \
     -DHALIDE_NO_PNG -DHALIDE_NO_JPEG \
     -ldl -lpthread
 

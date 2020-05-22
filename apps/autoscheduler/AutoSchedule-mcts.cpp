@@ -1704,25 +1704,33 @@ static std::string proc_exec(const char* cmd) {
 
 // NOT THREADSAFE
 // Returns true if process is parent, false otherwise
-static bool make_static_library(const string& app_name, const string& app_bin, int id) {
+static bool make_static_library(const string& app_name, const string& resnet_50_block, const string& app_bin, int id) {
 
     pid_t pid = fork();
     bool is_parent = pid != 0;
 
     if (is_parent) {
-        auto start = std::chrono::high_resolution_clock::now();
-        wait(NULL);
-        auto stop = std::chrono::high_resolution_clock::now();
+        const string original_lib_name = app_name == "resnet_50_blockwise" ?
+            "resnet50block_auto_schedule" + resnet_50_block + ".a" :
+            app_name + "_auto_schedule.a";
 
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        const string copied_lib_name = app_name == "resnet_50_blockwise" ?
+            "resnet50block_auto_schedule" + resnet_50_block + "_" + std::to_string(id) + ".a" :
+            app_name + "_auto_schedule_" + std::to_string(id) + ".a";
+
+        // auto start = std::chrono::high_resolution_clock::now();
+        wait(NULL);
+        // auto stop = std::chrono::high_resolution_clock::now();
+
+        // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
         // aslog(0) << "HASAN time taken to return from child with library: " << duration.count() << "\n";
 
-        start = std::chrono::high_resolution_clock::now();
-        const string copy = "cp " + app_bin + "/" + app_name + "_auto_schedule.a mcts_libs/" + app_name + "_auto_schedule_" + std::to_string(id) + ".a";
+        // start = std::chrono::high_resolution_clock::now();
+        const string copy = "cp " + app_bin + "/" + original_lib_name + " mcts_libs/" + copied_lib_name;
         proc_exec(copy.c_str());
-        stop = std::chrono::high_resolution_clock::now();
+        // stop = std::chrono::high_resolution_clock::now();
 
-        duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
         // aslog(0) << "HASAN time taken to copy library: " << duration.count() << "\n";
     }
 
@@ -1730,39 +1738,41 @@ static bool make_static_library(const string& app_name, const string& app_bin, i
 }
 
 // After running this command, we must wait(NULL) to wait for children to complete
-static void make_benchmark(const string& app_name, int id) {
+static void make_benchmark(const string& app_name, const string& resnet_50_block, int id) {
 
     pid_t pid = fork();
     bool is_parent = pid != 0;
 
     if (!is_parent) {
-        auto start = std::chrono::high_resolution_clock::now();
-        const string build_rungen = "cd .. && ./build_rungen " + app_name + " " + std::to_string(id);
+        // auto start = std::chrono::high_resolution_clock::now();
+        const string build_rungen = "cd .. && ./build_rungen " + app_name + " " + std::to_string(id) + " " + resnet_50_block;
         proc_exec(build_rungen.c_str());
-        auto stop = std::chrono::high_resolution_clock::now();
+        // auto stop = std::chrono::high_resolution_clock::now();
 
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+        // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
         // aslog(0) << "HASAN time taken to build benchmark: " << duration.count() << "\n";
 
         exit(0);
     }
 }
 
-static double run_benchmark(const string& app_name, int id) {
-    auto start = std::chrono::high_resolution_clock::now();
-    const string run_rungen = "cd .. && ./run_rungen " + app_name + " " + std::to_string(id);
+static double run_benchmark(const string& app_name, const string& resnet_50_block, int id) {
+    // auto start = std::chrono::high_resolution_clock::now();
+    const string run_rungen = "cd .. && ./run_rungen " + app_name + " " + std::to_string(id) + " " + resnet_50_block;
     proc_exec(run_rungen.c_str());
-    auto stop = std::chrono::high_resolution_clock::now();
+    // auto stop = std::chrono::high_resolution_clock::now();
 
-    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+    // auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
     // aslog(0) << "HASAN time taken to run: " << duration.count() << "\n";
 
-    start = std::chrono::high_resolution_clock::now();
-    const string cat = "cat mcts_libs/bench_" + std::to_string(id) + ".txt";
-    string result = proc_exec(cat.c_str());
-    stop = std::chrono::high_resolution_clock::now();
+    const string result_name = "bench" + resnet_50_block + "_" +  std::to_string(id);
 
-    duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
+    // start = std::chrono::high_resolution_clock::now();
+    const string cat = "cat mcts_libs/" + result_name + ".txt" ;
+    string result = proc_exec(cat.c_str());
+    // stop = std::chrono::high_resolution_clock::now();
+
+    // duration = std::chrono::duration_cast<std::chrono::microseconds>(stop - start); 
     // aslog(0) << "HASAN time taken to cat: " << duration.count() << "\n";
 
     double d = atof(result.c_str());
@@ -1924,6 +1934,9 @@ IntrusivePtr<State> optimal_mcts_schedule(
         exit(1);
     }
     static const string app_bin = app_name == "resnet_50_blockwise" ? "bin" : "bin/host";
+    static const string resnet_50_block = get_env_variable("MCTS_RESNET_50_BLOCK");
+
+    assert(app_name == "resnet_50_blockwise" || resnet_50_block.empty());
 
     bool is_parent_process = true;
 
@@ -2006,7 +2019,7 @@ IntrusivePtr<State> optimal_mcts_schedule(
         // Build .a files
         for (int i = 0; i < num_passes; i++) {
             if (actions[i].best_state_updated) {
-                is_parent_process = make_static_library(app_name, app_bin, i);
+                is_parent_process = make_static_library(app_name, resnet_50_block, app_bin, i);
                 // usleep(3000000);
 
                 if (is_parent_process) {
@@ -2041,7 +2054,7 @@ IntrusivePtr<State> optimal_mcts_schedule(
         for (int i = 0; i < num_passes; i++) {
             if (actions[i].best_state_updated) {
                 // Build the bench_x programs
-                make_benchmark(app_name, i);
+                make_benchmark(app_name, resnet_50_block, i);
             }
         }
 
@@ -2059,7 +2072,7 @@ IntrusivePtr<State> optimal_mcts_schedule(
 
         for (int i = 0; i < num_passes; i++) {
             if (actions[i].best_state_updated) {
-                double runtime = run_benchmark(app_name, i);
+                double runtime = run_benchmark(app_name, resnet_50_block, i);
 
                 if (runtime == 0) {
                     aslog(0) << "Error, runtime can't be 0\n";
@@ -2174,13 +2187,13 @@ IntrusivePtr<State> optimal_mcts_schedule(
 
             best = global_best_state;
 
-            is_parent_process = make_static_library(app_name, app_bin, i);
+            is_parent_process = make_static_library(app_name, resnet_50_block, app_bin, i);
 
             if (is_parent_process) {
-                make_benchmark(app_name, i);
+                make_benchmark(app_name, resnet_50_block, i);
                 wait(NULL);
 
-                run_benchmark(app_name, i);
+                run_benchmark(app_name, resnet_50_block, i);
 
                 string cat = "cat mcts_libs/bench_" + std::to_string(i) + ".txt >> mcts_libs/perf.txt";
                 int err = system(cat.c_str());

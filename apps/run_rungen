@@ -2,8 +2,9 @@
 
 app="$1"
 idx="$2"
+block="$3"
 
-if [ $# -ne 2 ]; then
+if [ $# -lt 2 ]; then
     echo not enough args
     exit 1
 fi
@@ -23,11 +24,16 @@ D="$bin"
 
 WEIGHTS="$PWD/autoscheduler/baseline.weights"
 GENERATOR="$bin/${app}.generator"
-PIPELINE=${app}
-AUTOSCHED_BIN="$PWD/autoscheduler/bin"
 HL_TARGET="host"
 FNAME="${app}_auto_schedule"
+
+if [ "$app" == "resnet_50_blockwise" ]; then
+    GENERATOR="$bin/bin/resnet50block.generator"
+    FNAME="resnet50block_auto_schedule${block}"
+fi
+
 REGCPP="${FNAME}.registration.cpp"
+BENCH="bench${block}_${idx}"
 
 TIMEOUT_CMD="timeout"
 if [ $(uname -s) = "Darwin" ] && ! which $TIMEOUT_CMD 2>&1 >/dev/null; then
@@ -44,11 +50,11 @@ BENCHMARKING_TIMEOUT=300s
 
 HL_NUM_THREADS=32 \
     ${TIMEOUT_CMD} -k ${BENCHMARKING_TIMEOUT} ${BENCHMARKING_TIMEOUT} \
-    ${app}/mcts_libs/bench_$idx \
+    ${app}/mcts_libs/$BENCH \
     --estimate_all \
     --benchmarks=all \
     $output_extents \
         | grep "^Benchmark for " \
         | sed 's/^Benchmark for '${FNAME}' produces best case of \(\S*\).*/\1/' \
-        > ${app}/mcts_libs/bench_${idx}.txt || echo "Benchmarking failed or timed out for ${D}"
+        > ${app}/mcts_libs/${BENCH}.txt || echo "Benchmarking failed or timed out for ${D}"
 

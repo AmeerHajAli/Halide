@@ -22,6 +22,7 @@ $(BIN)/resnet50block_classic_auto_schedule%.a: $(BIN)/resnet50block.generator
 $(BIN)/resnet50block_auto_schedule%.a: $(BIN)/resnet50block.generator $(AUTOSCHED_BIN)/libauto_schedule.so
 	@mkdir -p $(@D)
 	HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=$(HL_WEIGHTS_DIR) \
+	MCTS_RESNET_50_BLOCK=$* \
 	$(BIN)/resnet50block.generator -g resnet50block -o $(BIN) -f resnet50block_auto_schedule$* target=$(HL_TARGET) auto_schedule=true block_id=$* $(HL_CUSTOM_AUTOSCHEDULER)
 
 $(BIN)/pytorch_weights/ok:
