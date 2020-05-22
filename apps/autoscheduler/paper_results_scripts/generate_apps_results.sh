@@ -134,13 +134,15 @@ if [ "$APPS" != "" ]; then
         if [ "$RL_FIRST" != "false" ]; then
             echo > $results/$app.evaltime.txt
             echo > $results/$app.mincost.txt
-            echo > $results/$app.randtime.txt
             echo > $results/$app.runtime.txt
             echo > $results/$app.log
         fi
 
 
         if [ "$autoscheduler" == "random" ]; then
+            if [ "$RL_FIRST" != "false" ]; then
+                echo > $results/$app.randtime.txt
+            fi
             start=$SECONDS
             if [ "$app" != "iir_blur" ] && [ "$app" != "harris" ] && [ "$app" != "unsharp" ] ; then
                 make -C ${HALIDE}/apps/${app} build | tee $results/$app.log.$HL_SEED
@@ -176,6 +178,7 @@ if [ "$APPS" != "" ]; then
 
                 make -C ${HALIDE}/apps/${app} test &>> $results/$app.randtime.txt
             done
+            printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.randtime.txt
         else
             start=$SECONDS
             if [ "$app" != "iir_blur" ] && [ "$app" != "harris" ] && [ "$app" != "unsharp" ] ; then
@@ -201,7 +204,6 @@ if [ "$APPS" != "" ]; then
         cat $results/$app.log.$HL_SEED >> $results/$app.log
         printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.evaltime.txt
         printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.mincost.txt
-        printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.randtime.txt
         printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.runtime.txt
     done
 
@@ -246,13 +248,15 @@ if [ "$benchmark_resnet" == "true" ]; then
     if [ "$RL_FIRST" != "false" ]; then
         echo > $results/$app.evaltime.txt
         echo > $results/$app.mincost.txt
-        echo > $results/$app.randtime.txt
         echo > $results/$app.runtime.txt
         echo > $results/$app.log
     fi
 
 
     if [ "$autoscheduler" == "random" ]; then
+        if [ "$RL_FIRST" != "false" ]; then
+            echo > $results/$app.randtime.txt
+        fi
         start=$SECONDS
         make -C ${HALIDE}/apps/${app} all | tee $results/$app.log.$HL_SEED
         duration=$(( SECONDS - start ))
@@ -283,6 +287,7 @@ if [ "$benchmark_resnet" == "true" ]; then
             #make -C ${HALIDE}/apps/${app} test_manual &>> $results/$app.randtime.txt
             make -C ${HALIDE}/apps/${app} test_auto_schedule &>> $results/$app.randtime.txt
         done
+        printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.randtime.txt
     else 
         start=$SECONDS
         make -C ${HALIDE}/apps/${app} all -j${cores} | tee $results/$app.log.$HL_SEED
@@ -314,7 +319,6 @@ if [ "$benchmark_resnet" == "true" ]; then
     printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.txt
     printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.evaltime.txt
     printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.mincost.txt
-    printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.randtime.txt
-    printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.runtime.tx
+    printf "\n\nRL_END_OF_RUN %d\n\n" $HL_SEED >> $results/$app.runtime.txt
 
 fi
