@@ -5,7 +5,7 @@ import glob
 import os
 
 apps="bilateral_grid local_laplacian nl_means lens_blur camera_pipe stencil_chain harris hist max_filter unsharp interpolate conv_layer iir_blur bgu mat_mul resnet_50_blockwise".split(" ")
-autoschedulers="master random greedy beam mcts mcts_Cp_10 manual".split(" ")
+autoschedulers="master random greedy beam mcts mcts_10seconds mcts_1second mcts_Cp10 mcts_cost+real mcts_sqrt2 manual".split(" ")
 
 def strip_non_digits(s):
     return "".join([c for c in s if c.isdigit() or c == "."])
