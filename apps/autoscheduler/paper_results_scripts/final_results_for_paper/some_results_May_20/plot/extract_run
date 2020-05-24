@@ -25,7 +25,7 @@ def get_rand_result(fname, scale, num_rand, linestart="Auto-scheduled time:", fa
             num_parts = []
             for line in f:
                 if line.startswith(linestart):
-                    val = float(strip_non_digits(line)) / scale
+                    val = float(strip_non_digits(line.replace(linestart, ""))) / scale
                     rand_vals.append(val)
                 elif line.startswith("make: ***"):
                     # if make run failed
@@ -71,7 +71,7 @@ def get_result(fname, scale, linestart="Auto-scheduled time:", failed_val=10e6):
         with open(fname) as f:
             for line in f:
                 if line.startswith(linestart):
-                    value = float(strip_non_digits(line)) / scale
+                    value = float(strip_non_digits(line.replace(linestart, ""))) / scale
                     sub_values.append(value)
                 elif line.startswith("make: ***"):
                     # if make run failed
@@ -97,7 +97,7 @@ def get_mcts_result(fname, scale, linestart="Auto-scheduled time:", failed_val=1
                 delimiter = 0
                 for line in f:
                     if line.startswith(linestart):
-                        value = float(strip_non_digits(line)) / scale
+                        value = float(strip_non_digits(line.replace(linestart, ""))) / scale
                         sub_sub_values.append(value)
                     elif line.startswith("make: ***"):
                         # if make run failed
@@ -147,7 +147,6 @@ with open('algo_runtime.csv','w') as f:
         print("{},{}".format(app, (',').join(results)))
         f.write("{},{}\n".format(app, (',').join(results)))
     print("\n")
-
 
 with open('mincost.csv','w') as f: 
     print("mincost")
