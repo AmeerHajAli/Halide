@@ -1,0 +1,1321 @@
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/resnet_50_blockwise'
+c++ -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -rdynamic -g -fno-rtti Resnet50BlockGenerator.cpp /home/ubuntu/llvm-project/Halide/distrib/bin/libHalide.so /home/ubuntu/llvm-project/Halide/distrib/tools/GenGen.cpp -o bin/resnet50block.generator  -ldl -lpthread -lz -lz -lrt -ldl -lpthread -lm
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual0 target=host auto_schedule=false block_id=0
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual1 target=host auto_schedule=false block_id=1
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual2 target=host auto_schedule=false block_id=2
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual3 target=host auto_schedule=false block_id=3
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual4 target=host auto_schedule=false block_id=4
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual5 target=host auto_schedule=false block_id=5
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual6 target=host auto_schedule=false block_id=6
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual7 target=host auto_schedule=false block_id=7
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual8 target=host auto_schedule=false block_id=8
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual9 target=host auto_schedule=false block_id=9
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual10 target=host auto_schedule=false block_id=10
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual11 target=host auto_schedule=false block_id=11
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual12 target=host auto_schedule=false block_id=12
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual13 target=host auto_schedule=false block_id=13
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual14 target=host auto_schedule=false block_id=14
+bin/resnet50block.generator -g resnet50block -o bin -e static_library,h,stmt -f resnet50block_manual15 target=host auto_schedule=false block_id=15
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule0 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=0
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule1 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=1
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule2 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=2
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule3 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=3
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule4 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=4
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule5 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=5
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule6 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=6
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule7 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=7
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule8 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=8
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule9 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=9
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule10 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=10
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule11 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=11
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule12 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=12
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule13 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=13
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule14 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=14
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_classic_auto_schedule15 target=host auto_schedule=true classic_auto_schedule_estimates=true block_id=15
+c++ ../../tools/binary2cpp.cpp -o bin/binary2cpp
+bin/binary2cpp baseline_weights < /home/ubuntu/llvm-project/Halide/apps/autoscheduler/baseline.weights > bin/baseline_weights.cpp
+c++ -c bin/baseline_weights.cpp -o bin/baseline_weights.o
+c++ -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp /home/ubuntu/llvm-project/Halide/apps/autoscheduler/cost_model_generator.cpp /home/ubuntu/llvm-project/Halide/distrib/tools/GenGen.cpp -o bin/cost_model.generator -Wl,-rpath,/home/ubuntu/llvm-project/Halide/distrib/bin/ -L /home/ubuntu/llvm-project/Halide/distrib/bin/ -lHalide  -ldl -lpthread -lz -rdynamic
+bin/cost_model.generator -g cost_model -o bin/cost_model -f cost_model target=host-no_runtime auto_schedule=false -e stmt,static_library,h,assembly
+bin/cost_model.generator -g train_cost_model -o bin/cost_model -f train_cost_model target=host-no_runtime auto_schedule=false -e stmt,static_library,h,assembly
+bin/cost_model.generator -r auto_schedule_runtime -o bin target=host
+c++ -shared -rdynamic -fPIC -fvisibility=hidden -fvisibility-inlines-hidden -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -O3 -I bin/cost_model /home/ubuntu/llvm-project/Halide/apps/autoscheduler/AutoSchedule.cpp /home/ubuntu/llvm-project/Halide/apps/autoscheduler/ASLog.cpp /home/ubuntu/llvm-project/Halide/apps/autoscheduler/DefaultCostModel.cpp /home/ubuntu/llvm-project/Halide/apps/autoscheduler/Weights.cpp /home/ubuntu/llvm-project/Halide/apps/autoscheduler/FunctionDAG.cpp /home/ubuntu/llvm-project/Halide/apps/autoscheduler/LoopNest.cpp bin/baseline_weights.o bin/cost_model/cost_model.a bin/cost_model/train_cost_model.a /home/ubuntu/llvm-project/Halide/distrib/bin/libHalide.so /home/ubuntu/llvm-project/Halide/distrib/tools/GenGen.cpp bin/auto_schedule_runtime.a -o bin/libauto_schedule.so -lz -lrt -ldl -lpthread -lm
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule0 target=host auto_schedule=true block_id=0 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 80
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -3.42763
+finished depth 1 best value so far -3.42763
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -3.42763
+best intermediate value -3.55425
+finished depth 3 best value so far -3.42763
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -3.42763
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -3.42763
+best intermediate value -3.52622
+finished depth 6 best value so far -3.42763
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -3.42763
+best intermediate value -3.56077
+finished depth 8 best value so far -3.42763
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -3.42763
+best intermediate value -3.56635
+finished depth 10 best value so far -3.42763
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -3.42763
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -3.42763
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -3.42763
+best intermediate value -3.49088
+finished depth 14 best value so far -3.42763
+best intermediate value -3.33353
+finished depth 15 best value so far -3.33353
+best intermediate value -3.41327
+finished depth 16 best value so far -3.33353
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -3.33353
+best intermediate value -3.395
+finished depth 18 best value so far -3.33353
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -3.33353
+best intermediate value -3.35882
+finished depth 20 best value so far -3.33353
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -3.33353
+best intermediate value -3.25928
+finished depth 22 best value so far -3.25928
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -3.25928
+best intermediate value -3.27655
+finished depth 24 best value so far -3.25928
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -3.25928
+best intermediate value -3.24849
+finished depth 26 best value so far -3.24849
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -3.24849
+best intermediate value -3.11172
+finished depth 28 best value so far -3.11172
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -3.11172
+best intermediate value -3.12926
+finished depth 30 best value so far -3.11172
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -3.11172
+best intermediate value -3.04086
+finished depth 32 best value so far -3.04086
+best intermediate value -1.11111e+11
+finished depth 33 best value so far -3.04086
+best intermediate value -3.05849
+finished depth 34 best value so far -3.04086
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -3.04086
+best intermediate value -3.05913
+finished depth 36 best value so far -3.04086
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -3.04086
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -3.04086
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -3.04086
+best intermediate value -3.07175
+finished depth 40 best value so far -3.04086
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -3.04086
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -3.04086
+best intermediate value -2.97763
+finished depth 43 best value so far -2.97763
+best intermediate value -3.07461
+finished depth 44 best value so far -2.97763
+best intermediate value -2.96967
+finished depth 45 best value so far -2.96967
+best intermediate value -3.03834
+finished depth 46 best value so far -2.96967
+best intermediate value -1.11111e+11
+finished depth 47 best value so far -2.96967
+best intermediate value -1.11111e+11
+finished depth 48 best value so far -2.96967
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -2.96967
+best intermediate value -2.96336
+finished depth 50 best value so far -2.96336
+best intermediate value -1.11111e+11
+finished depth 51 best value so far -2.96336
+best intermediate value -2.99223
+finished depth 52 best value so far -2.96336
+best intermediate value -1.11111e+11
+finished depth 53 best value so far -2.96336
+best intermediate value -1.11111e+11
+finished depth 54 best value so far -2.96336
+best intermediate value -1.11111e+11
+finished depth 55 best value so far -2.96336
+best intermediate value -2.95473
+finished depth 56 best value so far -2.95473
+best intermediate value -1.11111e+11
+finished depth 57 best value so far -2.95473
+best intermediate value -2.84419
+finished depth 58 best value so far -2.84419
+best intermediate value -2.76809
+finished depth 59 best value so far -2.76809
+best intermediate value -2.73374
+finished depth 60 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 61 best value so far -2.73374
+best intermediate value -2.98009
+finished depth 62 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 63 best value so far -2.73374
+best intermediate value -2.75178
+finished depth 64 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 65 best value so far -2.73374
+best intermediate value -2.84047
+finished depth 66 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 67 best value so far -2.73374
+best intermediate value -2.83086
+finished depth 68 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 69 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 70 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 71 best value so far -2.73374
+best intermediate value -2.85792
+finished depth 72 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 73 best value so far -2.73374
+best intermediate value -2.78646
+finished depth 74 best value so far -2.73374
+best intermediate value -2.78402
+finished depth 75 best value so far -2.73374
+best intermediate value -2.78402
+finished depth 76 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 77 best value so far -2.73374
+best intermediate value -1.11111e+11
+finished depth 78 best value so far -2.73374
+JENNY_MINCOST: 2.73374
+JENNY_EVALTIME: 223981
+num_best_decisions: 23num_random_decisions: 14
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule1 target=host auto_schedule=true block_id=1 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -1.71905
+finished depth 1 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -1.71905
+best intermediate value -1.83473
+finished depth 3 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -1.71905
+best intermediate value -1.83219
+finished depth 6 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -1.71905
+best intermediate value -1.83581
+finished depth 8 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -1.71905
+best intermediate value -1.96665
+finished depth 10 best value so far -1.71905
+best intermediate value -1.97616
+finished depth 11 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -1.71905
+best intermediate value -1.98332
+finished depth 14 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -1.71905
+best intermediate value -1.98433
+finished depth 16 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -1.71905
+best intermediate value -1.99495
+finished depth 18 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -1.71905
+best intermediate value -2.27191
+finished depth 20 best value so far -1.71905
+best intermediate value -2.10435
+finished depth 21 best value so far -1.71905
+best intermediate value -1.85612
+finished depth 22 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -1.71905
+best intermediate value -1.75196
+finished depth 24 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -1.71905
+best intermediate value -1.76233
+finished depth 26 best value so far -1.71905
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -1.71905
+best intermediate value -1.67551
+finished depth 28 best value so far -1.67551
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -1.67551
+best intermediate value -1.67551
+finished depth 30 best value so far -1.67551
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -1.67551
+best intermediate value -1.68141
+finished depth 32 best value so far -1.67551
+best intermediate value -1.11111e+11
+finished depth 33 best value so far -1.67551
+best intermediate value -1.68066
+finished depth 34 best value so far -1.67551
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -1.67551
+best intermediate value -1.67242
+finished depth 36 best value so far -1.67242
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -1.67242
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -1.67242
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -1.67242
+best intermediate value -1.67017
+finished depth 40 best value so far -1.67017
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -1.67017
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -1.67017
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -1.67017
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -1.67017
+best intermediate value -1.67002
+finished depth 45 best value so far -1.67002
+best intermediate value -1.67002
+finished depth 46 best value so far -1.67002
+best intermediate value -1.67002
+finished depth 47 best value so far -1.67002
+best intermediate value -1.67002
+finished depth 48 best value so far -1.67002
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -1.67002
+best intermediate value -1.11111e+11
+finished depth 50 best value so far -1.67002
+JENNY_MINCOST: 1.67002
+JENNY_EVALTIME: 242645
+num_best_decisions: 14num_random_decisions: 10
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule2 target=host auto_schedule=true block_id=2 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -1.70927
+finished depth 1 best value so far -1.70927
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -1.70927
+best intermediate value -1.69008
+finished depth 3 best value so far -1.69008
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -1.69008
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -1.69008
+best intermediate value -1.68257
+finished depth 6 best value so far -1.68257
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -1.68257
+best intermediate value -1.56078
+finished depth 8 best value so far -1.56078
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -1.56078
+best intermediate value -1.66327
+finished depth 10 best value so far -1.56078
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -1.56078
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -1.56078
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -1.56078
+best intermediate value -1.607
+finished depth 14 best value so far -1.56078
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -1.56078
+best intermediate value -1.57591
+finished depth 16 best value so far -1.56078
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -1.56078
+best intermediate value -1.48246
+finished depth 18 best value so far -1.48246
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -1.48246
+best intermediate value -1.40024
+finished depth 20 best value so far -1.40024
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -1.40024
+best intermediate value -1.57792
+finished depth 22 best value so far -1.40024
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -1.40024
+best intermediate value -1.22969
+finished depth 24 best value so far -1.22969
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -1.22969
+best intermediate value -1.23234
+finished depth 26 best value so far -1.22969
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -1.22969
+best intermediate value -1.21591
+finished depth 28 best value so far -1.21591
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -1.21591
+best intermediate value -1.2186
+finished depth 30 best value so far -1.21591
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -1.21591
+best intermediate value -1.14948
+finished depth 32 best value so far -1.14948
+best intermediate value -1.12352
+finished depth 33 best value so far -1.12352
+best intermediate value -1.11655
+finished depth 34 best value so far -1.11655
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -1.11655
+best intermediate value -1.11395
+finished depth 36 best value so far -1.11395
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -1.11395
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -1.11395
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -1.11395
+best intermediate value -1.11304
+finished depth 40 best value so far -1.11304
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -1.11304
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -1.11304
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -1.11304
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -1.11304
+best intermediate value -1.1122
+finished depth 45 best value so far -1.1122
+best intermediate value -1.1122
+finished depth 46 best value so far -1.1122
+best intermediate value -1.1122
+finished depth 47 best value so far -1.1122
+best intermediate value -1.1122
+finished depth 48 best value so far -1.1122
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -1.1122
+best intermediate value -1.11111e+11
+finished depth 50 best value so far -1.1122
+JENNY_MINCOST: 1.1122
+JENNY_EVALTIME: 229036
+num_best_decisions: 7num_random_decisions: 16
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule3 target=host auto_schedule=true block_id=3 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 50
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -3.63527
+finished depth 1 best value so far -3.63527
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -3.63527
+best intermediate value -3.56761
+finished depth 3 best value so far -3.56761
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -3.56761
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -3.56761
+best intermediate value -3.54809
+finished depth 6 best value so far -3.54809
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -3.54809
+best intermediate value -3.71082
+finished depth 8 best value so far -3.54809
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -3.54809
+best intermediate value -3.84774
+finished depth 10 best value so far -3.54809
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -3.54809
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -3.54809
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -3.54809
+best intermediate value -3.15038
+finished depth 14 best value so far -3.15038
+best intermediate value -3.21747
+finished depth 15 best value so far -3.15038
+best intermediate value -2.69956
+finished depth 16 best value so far -2.69956
+best intermediate value -2.63393
+finished depth 17 best value so far -2.63393
+best intermediate value -2.87226
+finished depth 18 best value so far -2.63393
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -2.63393
+best intermediate value -2.58021
+finished depth 20 best value so far -2.58021
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -2.58021
+best intermediate value -1.11111e+11
+finished depth 22 best value so far -2.58021
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -2.58021
+best intermediate value -3.00455
+finished depth 24 best value so far -2.58021
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -2.58021
+best intermediate value -2.54657
+finished depth 26 best value so far -2.54657
+best intermediate value -2.54184
+finished depth 27 best value so far -2.54184
+best intermediate value -2.54184
+finished depth 28 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -2.54184
+best intermediate value -2.55318
+finished depth 30 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -2.54184
+best intermediate value -2.55318
+finished depth 32 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 33 best value so far -2.54184
+best intermediate value -2.55318
+finished depth 34 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 36 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -2.54184
+best intermediate value -2.55318
+finished depth 38 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -2.54184
+best intermediate value -2.55318
+finished depth 40 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -2.54184
+best intermediate value -2.55318
+finished depth 42 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 45 best value so far -2.54184
+best intermediate value -2.55318
+finished depth 46 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 47 best value so far -2.54184
+best intermediate value -1.11111e+11
+finished depth 48 best value so far -2.54184
+JENNY_MINCOST: 2.54184
+JENNY_EVALTIME: 244032
+num_best_decisions: 20num_random_decisions: 2
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule4 target=host auto_schedule=true block_id=4 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -2.76246
+finished depth 1 best value so far -2.76246
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -2.76246
+best intermediate value -1.87355
+finished depth 3 best value so far -1.87355
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -1.87355
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -1.87355
+best intermediate value -1.85638
+finished depth 6 best value so far -1.85638
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -1.85638
+best intermediate value -1.88419
+finished depth 8 best value so far -1.85638
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -1.85638
+best intermediate value -1.86644
+finished depth 10 best value so far -1.85638
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -1.85638
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -1.85638
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -1.85638
+best intermediate value -1.56327
+finished depth 14 best value so far -1.56327
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -1.56327
+best intermediate value -1.60748
+finished depth 16 best value so far -1.56327
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -1.56327
+best intermediate value -1.44834
+finished depth 18 best value so far -1.44834
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -1.44834
+best intermediate value -1.2662
+finished depth 20 best value so far -1.2662
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -1.2662
+best intermediate value -1.47041
+finished depth 22 best value so far -1.2662
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -1.2662
+best intermediate value -1.38006
+finished depth 24 best value so far -1.2662
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -1.2662
+best intermediate value -1.21922
+finished depth 26 best value so far -1.21922
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -1.21922
+best intermediate value -1.46692
+finished depth 28 best value so far -1.21922
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -1.21922
+best intermediate value -1.28067
+finished depth 30 best value so far -1.21922
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -1.21922
+best intermediate value -1.17609
+finished depth 32 best value so far -1.17609
+best intermediate value -1.21526
+finished depth 33 best value so far -1.17609
+best intermediate value -1.20571
+finished depth 34 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -1.17609
+best intermediate value -1.20616
+finished depth 36 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -1.17609
+best intermediate value -1.19912
+finished depth 40 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -1.17609
+best intermediate value -1.19713
+finished depth 45 best value so far -1.17609
+best intermediate value -1.19664
+finished depth 46 best value so far -1.17609
+best intermediate value -1.19713
+finished depth 47 best value so far -1.17609
+best intermediate value -1.19664
+finished depth 48 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -1.17609
+best intermediate value -1.11111e+11
+finished depth 50 best value so far -1.17609
+JENNY_MINCOST: 1.17609
+JENNY_EVALTIME: 255617
+num_best_decisions: 7num_random_decisions: 16
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule5 target=host auto_schedule=true block_id=5 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -2.73758
+finished depth 1 best value so far -2.73758
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -2.73758
+best intermediate value -2.06801
+finished depth 3 best value so far -2.06801
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -2.06801
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -2.06801
+best intermediate value -2.10524
+finished depth 6 best value so far -2.06801
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -2.06801
+best intermediate value -2.09388
+finished depth 8 best value so far -2.06801
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -2.06801
+best intermediate value -2.11872
+finished depth 10 best value so far -2.06801
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -2.06801
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -2.06801
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -2.06801
+best intermediate value -2.10743
+finished depth 14 best value so far -2.06801
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -2.06801
+best intermediate value -1.82321
+finished depth 16 best value so far -1.82321
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -1.82321
+best intermediate value -2.02224
+finished depth 18 best value so far -1.82321
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -1.82321
+best intermediate value -1.94678
+finished depth 20 best value so far -1.82321
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -1.82321
+best intermediate value -1.7752
+finished depth 22 best value so far -1.7752
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -1.7752
+best intermediate value -2.00451
+finished depth 24 best value so far -1.7752
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -1.7752
+best intermediate value -1.61322
+finished depth 26 best value so far -1.61322
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -1.61322
+best intermediate value -1.68358
+finished depth 28 best value so far -1.61322
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -1.61322
+best intermediate value -1.61681
+finished depth 30 best value so far -1.61322
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -1.61322
+best intermediate value -1.54144
+finished depth 32 best value so far -1.54144
+best intermediate value -1.53174
+finished depth 33 best value so far -1.53174
+best intermediate value -1.54144
+finished depth 34 best value so far -1.53174
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -1.53174
+best intermediate value -1.53791
+finished depth 36 best value so far -1.53174
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -1.53174
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -1.53174
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -1.53174
+best intermediate value -1.52296
+finished depth 40 best value so far -1.52296
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -1.52296
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -1.52296
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -1.52296
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -1.52296
+best intermediate value -1.52445
+finished depth 45 best value so far -1.52296
+best intermediate value -1.5221
+finished depth 46 best value so far -1.5221
+best intermediate value -1.52296
+finished depth 47 best value so far -1.5221
+best intermediate value -1.52296
+finished depth 48 best value so far -1.5221
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -1.5221
+best intermediate value -1.11111e+11
+finished depth 50 best value so far -1.5221
+JENNY_MINCOST: 1.5221
+JENNY_EVALTIME: 266963
+num_best_decisions: 7num_random_decisions: 16
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule6 target=host auto_schedule=true block_id=6 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -2.70253
+finished depth 1 best value so far -2.70253
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -2.70253
+best intermediate value -1.96985
+finished depth 3 best value so far -1.96985
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -1.96985
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -1.96985
+best intermediate value -1.79507
+finished depth 6 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -1.79507
+best intermediate value -1.80583
+finished depth 8 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -1.79507
+best intermediate value -1.91136
+finished depth 10 best value so far -1.79507
+best intermediate value -1.99373
+finished depth 11 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -1.79507
+best intermediate value -2.0579
+finished depth 14 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -1.79507
+best intermediate value -1.86731
+finished depth 16 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -1.79507
+best intermediate value -1.8306
+finished depth 18 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -1.79507
+best intermediate value -1.82117
+finished depth 20 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -1.79507
+best intermediate value -1.80842
+finished depth 22 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -1.79507
+best intermediate value -1.97019
+finished depth 24 best value so far -1.79507
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -1.79507
+best intermediate value -1.7501
+finished depth 26 best value so far -1.7501
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -1.7501
+best intermediate value -1.78198
+finished depth 28 best value so far -1.7501
+best intermediate value -1.72503
+finished depth 29 best value so far -1.72503
+best intermediate value -1.58703
+finished depth 30 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -1.58703
+best intermediate value -1.59356
+finished depth 32 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 33 best value so far -1.58703
+best intermediate value -1.60343
+finished depth 34 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -1.58703
+best intermediate value -1.59356
+finished depth 36 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -1.58703
+best intermediate value -1.59256
+finished depth 40 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -1.58703
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -1.58703
+best intermediate value -1.58468
+finished depth 45 best value so far -1.58468
+best intermediate value -1.58337
+finished depth 46 best value so far -1.58337
+best intermediate value -1.58978
+finished depth 47 best value so far -1.58337
+best intermediate value -1.58786
+finished depth 48 best value so far -1.58337
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -1.58337
+best intermediate value -1.11111e+11
+finished depth 50 best value so far -1.58337
+JENNY_MINCOST: 1.58337
+JENNY_EVALTIME: 263275
+num_best_decisions: 7num_random_decisions: 17
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule7 target=host auto_schedule=true block_id=7 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 50
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -4.13606
+finished depth 1 best value so far -4.13606
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -4.13606
+best intermediate value -4.02129
+finished depth 3 best value so far -4.02129
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -4.02129
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -4.02129
+best intermediate value -3.94847
+finished depth 6 best value so far -3.94847
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -3.94847
+best intermediate value -4.09737
+finished depth 8 best value so far -3.94847
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -3.94847
+best intermediate value -4.21196
+finished depth 10 best value so far -3.94847
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -3.94847
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -3.94847
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -3.94847
+best intermediate value -4.21196
+finished depth 14 best value so far -3.94847
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -3.94847
+best intermediate value -2.6211
+finished depth 16 best value so far -2.6211
+best intermediate value -2.57244
+finished depth 17 best value so far -2.57244
+best intermediate value -2.57244
+finished depth 18 best value so far -2.57244
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -2.57244
+best intermediate value -3.13336
+finished depth 20 best value so far -2.57244
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -2.57244
+best intermediate value -1.11111e+11
+finished depth 22 best value so far -2.57244
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -2.57244
+best intermediate value -2.6091
+finished depth 24 best value so far -2.57244
+best intermediate value -2.10483
+finished depth 25 best value so far -2.10483
+best intermediate value -2.10237
+finished depth 26 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -2.10237
+best intermediate value -2.10349
+finished depth 28 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -2.10237
+best intermediate value -2.11024
+finished depth 30 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -2.10237
+best intermediate value -2.13113
+finished depth 32 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 33 best value so far -2.10237
+best intermediate value -2.22034
+finished depth 34 best value so far -2.10237
+best intermediate value -2.22034
+finished depth 35 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 36 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -2.10237
+best intermediate value -2.22034
+finished depth 38 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -2.10237
+best intermediate value -2.22034
+finished depth 40 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -2.10237
+best intermediate value -2.22034
+finished depth 42 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 45 best value so far -2.10237
+best intermediate value -2.22034
+finished depth 46 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 47 best value so far -2.10237
+best intermediate value -1.11111e+11
+finished depth 48 best value so far -2.10237
+JENNY_MINCOST: 2.10237
+JENNY_EVALTIME: 251455
+num_best_decisions: 20num_random_decisions: 2
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule8 target=host auto_schedule=true block_id=8 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -2.98674
+finished depth 1 best value so far -2.98674
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -2.98674
+best intermediate value -2.95846
+finished depth 3 best value so far -2.95846
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -2.95846
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -2.95846
+best intermediate value -2.73215
+finished depth 6 best value so far -2.73215
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -2.73215
+best intermediate value -2.79366
+finished depth 8 best value so far -2.73215
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -2.73215
+best intermediate value -2.87221
+finished depth 10 best value so far -2.73215
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -2.73215
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -2.73215
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -2.73215
+best intermediate value -2.7257
+finished depth 14 best value so far -2.7257
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -2.7257
+best intermediate value -2.98118
+finished depth 16 best value so far -2.7257
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -2.7257
+best intermediate value -3.16012
+finished depth 18 best value so far -2.7257
+best intermediate value -2.94669
+finished depth 19 best value so far -2.7257
+best intermediate value -2.78376
+finished depth 20 best value so far -2.7257
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -2.7257
+best intermediate value -3.01361
+finished depth 22 best value so far -2.7257
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -2.7257
+best intermediate value -2.9542
+finished depth 24 best value so far -2.7257
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -2.7257
+best intermediate value -1.11111e+11
+finished depth 26 best value so far -2.7257
+best intermediate value -2.4067
+finished depth 27 best value so far -2.4067
+best intermediate value -2.10973
+finished depth 28 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 29 best value so far -2.10973
+best intermediate value -2.10973
+finished depth 30 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -2.10973
+best intermediate value -2.27242
+finished depth 32 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 33 best value so far -2.10973
+best intermediate value -2.24702
+finished depth 34 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -2.10973
+best intermediate value -2.13202
+finished depth 36 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -2.10973
+best intermediate value -2.16273
+finished depth 40 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -2.10973
+best intermediate value -2.1619
+finished depth 45 best value so far -2.10973
+best intermediate value -2.11196
+finished depth 46 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 47 best value so far -2.10973
+best intermediate value -2.11196
+finished depth 48 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -2.10973
+best intermediate value -1.11111e+11
+finished depth 50 best value so far -2.10973
+JENNY_MINCOST: 2.10973
+JENNY_EVALTIME: 226124
+num_best_decisions: 10num_random_decisions: 12
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule9 target=host auto_schedule=true block_id=9 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -3.17602
+finished depth 1 best value so far -3.17602
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -3.17602
+best intermediate value -2.69012
+finished depth 3 best value so far -2.69012
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -2.69012
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -2.69012
+best intermediate value -3.42154
+finished depth 6 best value so far -2.69012
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -2.69012
+best intermediate value -3.11219
+finished depth 8 best value so far -2.69012
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -2.69012
+best intermediate value -3.18527
+finished depth 10 best value so far -2.69012
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -2.69012
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -2.69012
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -2.69012
+best intermediate value -2.34453
+finished depth 14 best value so far -2.34453
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -2.34453
+best intermediate value -2.4606
+finished depth 16 best value so far -2.34453
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -2.34453
+best intermediate value -2.57411
+finished depth 18 best value so far -2.34453
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -2.34453
+best intermediate value -2.41518
+finished depth 20 best value so far -2.34453
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -2.34453
+best intermediate value -1.11111e+11
+finished depth 22 best value so far -2.34453
+best intermediate value -2.13295
+finished depth 23 best value so far -2.13295
+best intermediate value -2.28735
+finished depth 24 best value so far -2.13295
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -2.13295
+best intermediate value -2.28735
+finished depth 26 best value so far -2.13295
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -2.13295
+best intermediate value -2.21546
+finished depth 28 best value so far -2.13295
+best intermediate value -2.08888
+finished depth 29 best value so far -2.08888
+best intermediate value -2.08888
+finished depth 30 best value so far -2.08888
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -2.08888
+best intermediate value -2.09067
+finished depth 32 best value so far -2.08888
+best intermediate value -1.11111e+11
+finished depth 33 best value so far -2.08888
+best intermediate value -2.06113
+finished depth 34 best value so far -2.06113
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -2.06113
+best intermediate value -2.21738
+finished depth 36 best value so far -2.06113
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -2.06113
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -2.06113
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -2.06113
+best intermediate value -2.06113
+finished depth 40 best value so far -2.06113
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -2.06113
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -2.06113
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -2.06113
+best intermediate value -2.04305
+finished depth 44 best value so far -2.04305
+best intermediate value -2.04096
+finished depth 45 best value so far -2.04096
+best intermediate value -2.01676
+finished depth 46 best value so far -2.01676
+best intermediate value -1.11111e+11
+finished depth 47 best value so far -2.01676
+best intermediate value -2.01676
+finished depth 48 best value so far -2.01676
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -2.01676
+best intermediate value -1.11111e+11
+finished depth 50 best value so far -2.01676
+JENNY_MINCOST: 2.01676
+JENNY_EVALTIME: 228654
+num_best_decisions: 11num_random_decisions: 12
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule10 target=host auto_schedule=true block_id=10 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -2.94339
+finished depth 1 best value so far -2.94339
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -2.94339
+best intermediate value -2.7551
+finished depth 3 best value so far -2.7551
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -2.7551
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -2.7551
+best intermediate value -2.85897
+finished depth 6 best value so far -2.7551
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -2.7551
+best intermediate value -2.72414
+finished depth 8 best value so far -2.72414
+best intermediate value -1.11111e+11
+finished depth 9 best value so far -2.72414
+best intermediate value -2.64741
+finished depth 10 best value so far -2.64741
+best intermediate value -2.94276
+finished depth 11 best value so far -2.64741
+best intermediate value -1.11111e+11
+finished depth 12 best value so far -2.64741
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -2.64741
+best intermediate value -2.78413
+finished depth 14 best value so far -2.64741
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -2.64741
+best intermediate value -3.03179
+finished depth 16 best value so far -2.64741
+best intermediate value -1.11111e+11
+finished depth 17 best value so far -2.64741
+best intermediate value -2.85097
+finished depth 18 best value so far -2.64741
+best intermediate value -1.11111e+11
+finished depth 19 best value so far -2.64741
+best intermediate value -2.61179
+finished depth 20 best value so far -2.61179
+best intermediate value -1.11111e+11
+finished depth 21 best value so far -2.61179
+best intermediate value -2.32359
+finished depth 22 best value so far -2.32359
+best intermediate value -1.11111e+11
+finished depth 23 best value so far -2.32359
+best intermediate value -2.35392
+finished depth 24 best value so far -2.32359
+best intermediate value -1.11111e+11
+finished depth 25 best value so far -2.32359
+best intermediate value -2.39611
+finished depth 26 best value so far -2.32359
+best intermediate value -1.11111e+11
+finished depth 27 best value so far -2.32359
+best intermediate value -2.29263
+finished depth 28 best value so far -2.29263
+best intermediate value -2.28658
+finished depth 29 best value so far -2.28658
+best intermediate value -2.2643
+finished depth 30 best value so far -2.2643
+best intermediate value -1.11111e+11
+finished depth 31 best value so far -2.2643
+best intermediate value -2.14205
+finished depth 32 best value so far -2.14205
+best intermediate value -1.11111e+11
+finished depth 33 best value so far -2.14205
+best intermediate value -2.14532
+finished depth 34 best value so far -2.14205
+best intermediate value -1.11111e+11
+finished depth 35 best value so far -2.14205
+best intermediate value -2.09188
+finished depth 36 best value so far -2.09188
+best intermediate value -1.11111e+11
+finished depth 37 best value so far -2.09188
+best intermediate value -1.11111e+11
+finished depth 38 best value so far -2.09188
+best intermediate value -1.11111e+11
+finished depth 39 best value so far -2.09188
+best intermediate value -2.06573
+finished depth 40 best value so far -2.06573
+best intermediate value -1.11111e+11
+finished depth 41 best value so far -2.06573
+best intermediate value -1.11111e+11
+finished depth 42 best value so far -2.06573
+best intermediate value -1.11111e+11
+finished depth 43 best value so far -2.06573
+best intermediate value -1.11111e+11
+finished depth 44 best value so far -2.06573
+best intermediate value -2.05215
+finished depth 45 best value so far -2.05215
+best intermediate value -2.04241
+finished depth 46 best value so far -2.04241
+best intermediate value -2.04241
+finished depth 47 best value so far -2.04241
+best intermediate value -2.04241
+finished depth 48 best value so far -2.04241
+best intermediate value -1.11111e+11
+finished depth 49 best value so far -2.04241
+best intermediate value -1.11111e+11
+finished depth 50 best value so far -2.04241
+JENNY_MINCOST: 2.04241
+JENNY_EVALTIME: 294028
+num_best_decisions: 9num_random_decisions: 15
+HL_PERMIT_FAILED_UNROLL=1 HL_WEIGHTS_DIR=/home/ubuntu/llvm-project/Halide/apps/autoscheduler/paper_results_scripts/../baseline.weights \
+bin/resnet50block.generator -g resnet50block -o bin -f resnet50block_auto_schedule11 target=host auto_schedule=true block_id=11 -p bin/libauto_schedule.so -s Adams2019
+mcts_depth 52
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -3.03228
+finished depth 1 best value so far -3.03228
+best intermediate value -1.11111e+11
+finished depth 2 best value so far -3.03228
+best intermediate value -2.84134
+finished depth 3 best value so far -2.84134
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -2.84134
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -2.84134
+best intermediate value -2.68027
+finished depth 6 best value so far -2.68027
+Makefile:23: recipe for target 'bin/resnet50block_auto_schedule11.a' failed
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/resnet_50_blockwise'
