@@ -1,0 +1,217 @@
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.03198ms
+Auto-scheduled time: 11.1362ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.0403ms
+Auto-scheduled time: 11.144ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.02191ms
+Auto-scheduled time: 11.126ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 3
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.03205ms
+Auto-scheduled time: 11.1012ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 4
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.02923ms
+Auto-scheduled time: 11.13ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 5
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.04421ms
+Auto-scheduled time: 11.1333ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 6
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.02597ms
+Auto-scheduled time: 11.1399ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 7
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.0272ms
+Auto-scheduled time: 11.1139ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 8
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.03108ms
+Auto-scheduled time: 11.1177ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 9
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.03019ms
+Auto-scheduled time: 11.1404ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 10
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.04701ms
+Auto-scheduled time: 11.1505ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 11
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.01951ms
+Auto-scheduled time: 11.1511ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 12
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.03325ms
+Auto-scheduled time: 11.1229ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.02852ms
+Auto-scheduled time: 11.1257ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 14
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.01611ms
+Auto-scheduled time: 11.1204ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 15
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.05202ms
+Auto-scheduled time: 11.1071ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 16
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.01761ms
+Auto-scheduled time: 11.1559ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 17
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.03849ms
+Auto-scheduled time: 11.0973ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 18
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.03056ms
+Auto-scheduled time: 11.1371ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 19
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.02923ms
+Auto-scheduled time: 11.1422ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 20
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.04406ms
+Auto-scheduled time: 11.1109ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 21
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.04623ms
+Auto-scheduled time: 11.1085ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 22
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.04724ms
+Auto-scheduled time: 11.1205ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 23
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+bin/host/filter ../images/rgb.png bin/host/out.png
+Manually-tuned time: 9.03836ms
+Auto-scheduled time: 11.1336ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/bgu'
+
+
+RL_END_OF_RUN 24
+

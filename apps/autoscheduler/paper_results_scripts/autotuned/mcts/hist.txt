@@ -1,0 +1,472 @@
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.29213ms
+Auto-scheduled time: 2.44953ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20961ms
+Auto-scheduled time: 2.31605ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.58472ms
+Auto-scheduled time: 2.27577ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 3
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.23492ms
+Auto-scheduled time: 2.35897ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 4
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.39564ms
+Auto-scheduled time: 2.32294ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 5
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.37118ms
+Auto-scheduled time: 2.33023ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 6
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 0.916037ms
+Auto-scheduled time: 1.82085ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 7
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.6722ms
+Auto-scheduled time: 2.32158ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 8
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.41606ms
+Auto-scheduled time: 2.33697ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 9
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.26889ms
+Auto-scheduled time: 2.53339ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 10
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.01579ms
+Auto-scheduled time: 2.39808ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 11
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.74296ms
+Auto-scheduled time: 2.31144ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 12
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.33352ms
+Auto-scheduled time: 1.91842ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.01742ms
+Auto-scheduled time: 2.28334ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 14
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.2922ms
+Auto-scheduled time: 2.25648ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 15
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.19648ms
+Auto-scheduled time: 2.29387ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 16
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.17024ms
+Auto-scheduled time: 1.88078ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 17
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.3321ms
+Auto-scheduled time: 1.91958ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 18
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21734ms
+Auto-scheduled time: 1.87959ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 19
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.32287ms
+Auto-scheduled time: 2.32649ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 20
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.69032ms
+Auto-scheduled time: 2.46058ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 21
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21839ms
+Auto-scheduled time: 2.2986ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 22
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.32654ms
+Auto-scheduled time: 2.55298ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 23
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.23961ms
+Auto-scheduled time: 2.3738ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 24
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 0.921423ms
+Auto-scheduled time: 2.34874ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 25
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20961ms
+Auto-scheduled time: 2.3756ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 26
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.28783ms
+Auto-scheduled time: 2.30993ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 27
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20062ms
+Auto-scheduled time: 2.33687ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 28
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.67735ms
+Auto-scheduled time: 2.32715ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 29
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.46203ms
+Auto-scheduled time: 1.91302ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 30
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.5082ms
+Auto-scheduled time: 2.40717ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 31
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.7017ms
+Auto-scheduled time: 2.28338ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 32
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.33642ms
+Auto-scheduled time: 2.39247ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 33
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.16057ms
+Auto-scheduled time: 2.33686ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 34
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 0.922335ms
+Auto-scheduled time: 2.52511ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 35
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 0.92357ms
+Auto-scheduled time: 1.89627ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 36
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.18844ms
+Auto-scheduled time: 2.28739ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 37
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.17989ms
+Auto-scheduled time: 2.38355ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 38
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 0.923815ms
+Auto-scheduled time: 2.25691ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 39
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/hist.generator -g hist -f hist -o bin/host target=host-no_runtime auto_schedule=false
+bin/host/hist.generator -g hist -f hist_auto_schedule -o bin/host target=host-no_runtime auto_schedule=true -e static_library,c_header,schedule -p /home/ubuntu/llvm-project/Halide/apps/autoscheduler/bin/libauto_schedule.so -s Adams2019
+generate_rl_schedule for target=x86-64-linux-avx-avx2-avx512-avx512_skylake-f16c-fma-no_runtime-sse41
+Seed = 40
+mcts_depth 18
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+Cost evaluated this many times: 0
+best intermediate value -5.63608
+finished depth 1 best value so far -5.63608
+Cost evaluated this many times: 20169
+best intermediate value -5.07349
+finished depth 2 best value so far -5.07349
+Cost evaluated this many times: 45719
+best intermediate value -1.11111e+11
+finished depth 3 best value so far -5.07349
+Cost evaluated this many times: 45719
+best intermediate value -1.11111e+11
+finished depth 4 best value so far -5.07349
+Cost evaluated this many times: 45719
+best intermediate value -1.11111e+11
+finished depth 5 best value so far -5.07349
+Cost evaluated this many times: 45719
+best intermediate value -1.11111e+11
+finished depth 6 best value so far -5.07349
+Cost evaluated this many times: 45719
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -5.07349
+Cost evaluated this many times: 45719
+best intermediate value -4.83474
+finished depth 8 best value so far -4.83474
+Cost evaluated this many times: 65215
+best intermediate value -4.92248
+finished depth 9 best value so far -4.83474
+Cost evaluated this many times: 83616
+best intermediate value -4.82679
+finished depth 10 best value so far -4.82679
+Cost evaluated this many times: 102808
+best intermediate value -1.11111e+11
+finished depth 11 best value so far -4.82679
+Cost evaluated this many times: 102808
+best intermediate value -4.82679
+finished depth 12 best value so far -4.82679
+Cost evaluated this many times: 134615
+best intermediate value -1.11111e+11
+finished depth 13 best value so far -4.82679
+Cost evaluated this many times: 134615
+best intermediate value -4.82679
+finished depth 14 best value so far -4.82679
+Cost evaluated this many times: 167260
+best intermediate value -1.11111e+11
+finished depth 15 best value so far -4.82679
+Cost evaluated this many times: 167260
+best intermediate value -1.11111e+11
+finished depth 16 best value so far -4.82679
+Cost evaluated this many times: 167260
+global best cost: 4.82679
+JENNY_MINCOST: 4.82679
+JENNY_EVALTIME: 167260
+num_best_decisions: 0num_random_decisions: 7
+Cost evaluated this many times: 167260
+bin/host/hist.generator -r runtime -o bin/host target=host
+c++ -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/hist.a bin/host/hist_auto_schedule.a bin/host/runtime.a -o bin/host/filter  -ldl -lpthread -lz -L/home/ubuntu/anaconda3/envs/halide/lib -lpng16  -ljpeg -I/home/ubuntu/anaconda3/envs/halide/include/libpng16 -I/home/ubuntu/anaconda3/envs/halide/include/libpng16/..   
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 0.920531ms
+Auto-scheduled time: 2.31398ms
+rm bin/host/runtime.a bin/host/hist_auto_schedule.a bin/host/hist.a
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 40
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.24031ms
+Auto-scheduled time: 1.90491ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 41
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.28333ms
+Auto-scheduled time: 2.33313ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 42
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20497ms
+Auto-scheduled time: 1.91874ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 43
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21592ms
+Auto-scheduled time: 2.39718ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 44
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 0.929051ms
+Auto-scheduled time: 2.28892ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/hist'
+
+
+RL_END_OF_RUN 45
+

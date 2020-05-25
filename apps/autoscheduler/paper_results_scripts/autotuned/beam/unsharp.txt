@@ -1,0 +1,550 @@
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20986ms
+Auto-scheduled time: 1.5443ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20973ms
+Auto-scheduled time: 1.52785ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21193ms
+Auto-scheduled time: 1.53138ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 3
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21173ms
+Auto-scheduled time: 1.54192ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 4
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20917ms
+Auto-scheduled time: 1.52337ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 5
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20586ms
+Auto-scheduled time: 1.52433ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 6
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21283ms
+Auto-scheduled time: 1.52408ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 7
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21454ms
+Auto-scheduled time: 1.53994ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 8
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20817ms
+Auto-scheduled time: 1.53464ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 9
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.22778ms
+Auto-scheduled time: 1.52509ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 10
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21366ms
+Auto-scheduled time: 1.52745ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 11
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20682ms
+Auto-scheduled time: 1.52423ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 12
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20369ms
+Auto-scheduled time: 1.53558ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20622ms
+Auto-scheduled time: 1.53316ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 14
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21094ms
+Auto-scheduled time: 1.52754ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 15
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21851ms
+Auto-scheduled time: 1.53838ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 16
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21005ms
+Auto-scheduled time: 1.53041ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 17
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20604ms
+Auto-scheduled time: 1.54041ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 18
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21453ms
+Auto-scheduled time: 1.54764ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 19
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21188ms
+Auto-scheduled time: 1.55046ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 20
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20936ms
+Auto-scheduled time: 1.54317ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 21
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21183ms
+Auto-scheduled time: 1.524ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 22
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21374ms
+Auto-scheduled time: 1.53006ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 23
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21703ms
+Auto-scheduled time: 1.52925ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 24
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20625ms
+Auto-scheduled time: 1.54188ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 25
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20888ms
+Auto-scheduled time: 1.52887ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 26
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.22703ms
+Auto-scheduled time: 1.52491ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 27
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21262ms
+Auto-scheduled time: 1.52847ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 28
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21151ms
+Auto-scheduled time: 1.54557ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 29
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20767ms
+Auto-scheduled time: 1.52893ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 30
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21246ms
+Auto-scheduled time: 1.53163ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 31
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.22153ms
+Auto-scheduled time: 1.53886ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 32
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20819ms
+Auto-scheduled time: 1.52763ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 33
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21276ms
+Auto-scheduled time: 1.52667ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 34
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.22439ms
+Auto-scheduled time: 1.52532ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 35
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21241ms
+Auto-scheduled time: 1.54078ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 36
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20312ms
+Auto-scheduled time: 1.54ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 37
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.2109ms
+Auto-scheduled time: 1.53266ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 38
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21815ms
+Auto-scheduled time: 1.53144ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 39
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20932ms
+Auto-scheduled time: 1.52459ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 40
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20577ms
+Auto-scheduled time: 1.52114ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 41
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.22695ms
+Auto-scheduled time: 1.53699ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 42
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21285ms
+Auto-scheduled time: 1.52867ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 43
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.2143ms
+Auto-scheduled time: 1.52762ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 44
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21127ms
+Auto-scheduled time: 1.54587ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 45
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21167ms
+Auto-scheduled time: 1.54158ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 46
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20915ms
+Auto-scheduled time: 1.53831ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 47
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.22103ms
+Auto-scheduled time: 1.53619ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 48
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20834ms
+Auto-scheduled time: 1.5326ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 49
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21437ms
+Auto-scheduled time: 1.5469ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 50
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21285ms
+Auto-scheduled time: 1.52985ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 51
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20686ms
+Auto-scheduled time: 1.5256ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 52
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21948ms
+Auto-scheduled time: 1.53841ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 53
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.2098ms
+Auto-scheduled time: 1.53542ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 54
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20835ms
+Auto-scheduled time: 1.52822ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 55
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.22322ms
+Auto-scheduled time: 1.533ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 56
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.20813ms
+Auto-scheduled time: 1.54981ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 57
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.22992ms
+Auto-scheduled time: 1.54494ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 58
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21711ms
+Auto-scheduled time: 1.54761ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 59
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21296ms
+Auto-scheduled time: 1.53246ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 60
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 1.21178ms
+Auto-scheduled time: 1.52526ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/unsharp'
+
+
+RL_END_OF_RUN 61
+

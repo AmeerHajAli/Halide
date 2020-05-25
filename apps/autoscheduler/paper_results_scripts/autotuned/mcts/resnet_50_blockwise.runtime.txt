@@ -1,0 +1,26 @@
+
+resnet_50_blockwise 483
+
+
+RL_END_OF_RUN 3
+
+resnet_50_blockwise 521
+
+
+RL_END_OF_RUN 4
+
+resnet_50_blockwise 664
+
+
+RL_END_OF_RUN 5
+
+resnet_50_blockwise 486
+
+
+RL_END_OF_RUN 6
+
+resnet_50_blockwise 671
+
+
+RL_END_OF_RUN 7
+

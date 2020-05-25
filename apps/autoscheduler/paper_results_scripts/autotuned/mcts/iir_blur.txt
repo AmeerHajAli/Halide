@@ -1,0 +1,511 @@
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4313ms
+Auto-scheduled time: 46.6222ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4704ms
+Auto-scheduled time: 46.3983ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4221ms
+Auto-scheduled time: 27.7511ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 3
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.3874ms
+Auto-scheduled time: 28.9105ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 4
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4144ms
+Auto-scheduled time: 48.4113ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 5
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4504ms
+Auto-scheduled time: 23.1308ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 6
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4519ms
+Auto-scheduled time: 48.2717ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 7
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4227ms
+Auto-scheduled time: 27.73ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 8
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/iir_blur.generator -g iir_blur -f iir_blur -o bin/host target=host-no_runtime auto_schedule=false
+bin/host/iir_blur.generator -g iir_blur -f iir_blur_auto_schedule -o bin/host target=host-no_runtime auto_schedule=true -p /home/ubuntu/llvm-project/Halide/apps/autoscheduler/bin/libauto_schedule.so -s Adams2019
+generate_rl_schedule for target=x86-64-linux-avx-avx2-avx512-avx512_skylake-f16c-fma-no_runtime-sse41
+Seed = 9
+mcts_depth 10
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+Cost evaluated this many times: 0
+best intermediate value -12.3402
+finished depth 1 best value so far -12.3402
+Cost evaluated this many times: 17003
+best intermediate value -9.70749
+finished depth 2 best value so far -9.70749
+Cost evaluated this many times: 45455
+best intermediate value -1.11111e+11
+finished depth 3 best value so far -9.70749
+Cost evaluated this many times: 45455
+best intermediate value -9.68029
+finished depth 4 best value so far -9.68029
+Cost evaluated this many times: 78866
+best intermediate value -9.68029
+finished depth 5 best value so far -9.68029
+Cost evaluated this many times: 98686
+best intermediate value -9.68029
+finished depth 6 best value so far -9.68029
+Cost evaluated this many times: 134148
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -9.68029
+Cost evaluated this many times: 134148
+best intermediate value -1.11111e+11
+finished depth 8 best value so far -9.68029
+Cost evaluated this many times: 134148
+global best cost: 9.68029
+JENNY_MINCOST: 9.68029
+JENNY_EVALTIME: 134148
+num_best_decisions: 1num_random_decisions: 4
+Cost evaluated this many times: 134148
+bin/host/iir_blur.generator -r runtime -o bin/host target=host
+c++ -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/iir_blur.a bin/host/iir_blur_auto_schedule.a bin/host/runtime.a -o bin/host/filter  -ldl -lpthread -lz -L/home/ubuntu/anaconda3/envs/halide/lib -lpng16  -ljpeg -I/home/ubuntu/anaconda3/envs/halide/include/libpng16 -I/home/ubuntu/anaconda3/envs/halide/include/libpng16/..   
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.489ms
+Auto-scheduled time: 25.7857ms
+rm bin/host/iir_blur.a bin/host/runtime.a bin/host/iir_blur_auto_schedule.a
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 9
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4812ms
+Auto-scheduled time: 28.8638ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 10
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4477ms
+Auto-scheduled time: 25.6056ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 11
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4127ms
+Auto-scheduled time: 46.8634ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 12
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/iir_blur.generator -g iir_blur -f iir_blur -o bin/host target=host-no_runtime auto_schedule=false
+bin/host/iir_blur.generator -g iir_blur -f iir_blur_auto_schedule -o bin/host target=host-no_runtime auto_schedule=true -p /home/ubuntu/llvm-project/Halide/apps/autoscheduler/bin/libauto_schedule.so -s Adams2019
+generate_rl_schedule for target=x86-64-linux-avx-avx2-avx512-avx512_skylake-f16c-fma-no_runtime-sse41
+Seed = 13
+mcts_depth 10
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+Cost evaluated this many times: 0
+best intermediate value -11.158
+finished depth 1 best value so far -11.158
+Cost evaluated this many times: 16523
+best intermediate value -9.60713
+finished depth 2 best value so far -9.60713
+Cost evaluated this many times: 44392
+best intermediate value -1.11111e+11
+finished depth 3 best value so far -9.60713
+Cost evaluated this many times: 44392
+best intermediate value -9.59189
+finished depth 4 best value so far -9.59189
+Cost evaluated this many times: 77082
+best intermediate value -9.59189
+finished depth 5 best value so far -9.59189
+Cost evaluated this many times: 94981
+best intermediate value -9.59189
+finished depth 6 best value so far -9.59189
+Cost evaluated this many times: 130429
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -9.59189
+Cost evaluated this many times: 130429
+best intermediate value -1.11111e+11
+finished depth 8 best value so far -9.59189
+Cost evaluated this many times: 130429
+global best cost: 9.59189
+JENNY_MINCOST: 9.59189
+JENNY_EVALTIME: 130429
+num_best_decisions: 1num_random_decisions: 4
+Cost evaluated this many times: 130429
+bin/host/iir_blur.generator -r runtime -o bin/host target=host
+c++ -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/iir_blur.a bin/host/iir_blur_auto_schedule.a bin/host/runtime.a -o bin/host/filter  -ldl -lpthread -lz -L/home/ubuntu/anaconda3/envs/halide/lib -lpng16  -ljpeg -I/home/ubuntu/anaconda3/envs/halide/include/libpng16 -I/home/ubuntu/anaconda3/envs/halide/include/libpng16/..   
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.3555ms
+Auto-scheduled time: 25.8678ms
+rm bin/host/iir_blur.a bin/host/runtime.a bin/host/iir_blur_auto_schedule.a
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4539ms
+Auto-scheduled time: 46.8736ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 14
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/iir_blur.generator -g iir_blur -f iir_blur -o bin/host target=host-no_runtime auto_schedule=false
+bin/host/iir_blur.generator -g iir_blur -f iir_blur_auto_schedule -o bin/host target=host-no_runtime auto_schedule=true -p /home/ubuntu/llvm-project/Halide/apps/autoscheduler/bin/libauto_schedule.so -s Adams2019
+generate_rl_schedule for target=x86-64-linux-avx-avx2-avx512-avx512_skylake-f16c-fma-no_runtime-sse41
+Seed = 15
+mcts_depth 10
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+Cost evaluated this many times: 0
+best intermediate value -11.5867
+finished depth 1 best value so far -11.5867
+Cost evaluated this many times: 16869
+best intermediate value -10.0519
+finished depth 2 best value so far -10.0519
+Cost evaluated this many times: 47223
+best intermediate value -1.11111e+11
+finished depth 3 best value so far -10.0519
+Cost evaluated this many times: 47223
+best intermediate value -9.68029
+finished depth 4 best value so far -9.68029
+Cost evaluated this many times: 78700
+best intermediate value -9.68029
+finished depth 5 best value so far -9.68029
+Cost evaluated this many times: 97874
+best intermediate value -9.68029
+finished depth 6 best value so far -9.68029
+Cost evaluated this many times: 133350
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -9.68029
+Cost evaluated this many times: 133350
+best intermediate value -1.11111e+11
+finished depth 8 best value so far -9.68029
+Cost evaluated this many times: 133350
+global best cost: 9.68029
+JENNY_MINCOST: 9.68029
+JENNY_EVALTIME: 133350
+num_best_decisions: 1num_random_decisions: 4
+Cost evaluated this many times: 133350
+bin/host/iir_blur.generator -r runtime -o bin/host target=host
+c++ -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/iir_blur.a bin/host/iir_blur_auto_schedule.a bin/host/runtime.a -o bin/host/filter  -ldl -lpthread -lz -L/home/ubuntu/anaconda3/envs/halide/lib -lpng16  -ljpeg -I/home/ubuntu/anaconda3/envs/halide/include/libpng16 -I/home/ubuntu/anaconda3/envs/halide/include/libpng16/..   
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4159ms
+Auto-scheduled time: 25.9471ms
+rm bin/host/iir_blur.a bin/host/runtime.a bin/host/iir_blur_auto_schedule.a
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 15
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4372ms
+Auto-scheduled time: 30.9224ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 16
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4364ms
+Auto-scheduled time: 25.3335ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 17
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.3743ms
+Auto-scheduled time: 25.8731ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 18
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4094ms
+Auto-scheduled time: 25.8991ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 19
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.3751ms
+Auto-scheduled time: 29.2671ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 20
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4366ms
+Auto-scheduled time: 46.7001ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 21
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.3946ms
+Auto-scheduled time: 26.4107ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 22
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4869ms
+Auto-scheduled time: 31.636ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 23
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4588ms
+Auto-scheduled time: 28.9772ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 24
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.3731ms
+Auto-scheduled time: 46.7302ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 25
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4363ms
+Auto-scheduled time: 25.851ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 26
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4382ms
+Auto-scheduled time: 29.6428ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 27
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4074ms
+Auto-scheduled time: 26.3797ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 28
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4461ms
+Auto-scheduled time: 46.2302ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 29
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4148ms
+Auto-scheduled time: 27.2032ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 30
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.3952ms
+Auto-scheduled time: 32.6518ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 31
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/iir_blur.generator -g iir_blur -f iir_blur -o bin/host target=host-no_runtime auto_schedule=false
+bin/host/iir_blur.generator -g iir_blur -f iir_blur_auto_schedule -o bin/host target=host-no_runtime auto_schedule=true -p /home/ubuntu/llvm-project/Halide/apps/autoscheduler/bin/libauto_schedule.so -s Adams2019
+generate_rl_schedule for target=x86-64-linux-avx-avx2-avx512-avx512_skylake-f16c-fma-no_runtime-sse41
+Seed = 32
+mcts_depth 10
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+Cost evaluated this many times: 0
+best intermediate value -13.0462
+finished depth 1 best value so far -13.0462
+Cost evaluated this many times: 16718
+best intermediate value -12.3392
+finished depth 2 best value so far -12.3392
+Cost evaluated this many times: 48546
+best intermediate value -1.11111e+11
+finished depth 3 best value so far -12.3392
+Cost evaluated this many times: 48546
+best intermediate value -12.222
+finished depth 4 best value so far -12.222
+Cost evaluated this many times: 80447
+best intermediate value -12.222
+finished depth 5 best value so far -12.222
+Cost evaluated this many times: 96056
+best intermediate value -12.222
+finished depth 6 best value so far -12.222
+Cost evaluated this many times: 131498
+best intermediate value -1.11111e+11
+finished depth 7 best value so far -12.222
+Cost evaluated this many times: 131498
+best intermediate value -1.11111e+11
+finished depth 8 best value so far -12.222
+Cost evaluated this many times: 131498
+global best cost: 12.222
+JENNY_MINCOST: 12.222
+JENNY_EVALTIME: 131498
+num_best_decisions: 1num_random_decisions: 4
+Cost evaluated this many times: 131498
+bin/host/iir_blur.generator -r runtime -o bin/host target=host
+c++ -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -Ibin/host -Wall -O3 filter.cpp bin/host/iir_blur.a bin/host/iir_blur_auto_schedule.a bin/host/runtime.a -o bin/host/filter  -ldl -lpthread -lz -L/home/ubuntu/anaconda3/envs/halide/lib -lpng16  -ljpeg -I/home/ubuntu/anaconda3/envs/halide/include/libpng16 -I/home/ubuntu/anaconda3/envs/halide/include/libpng16/..   
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.409ms
+Auto-scheduled time: 31.7624ms
+rm bin/host/iir_blur.a bin/host/runtime.a bin/host/iir_blur_auto_schedule.a
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 32
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4722ms
+Auto-scheduled time: 26.9909ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 33
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4158ms
+Auto-scheduled time: 25.1938ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 34
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4017ms
+Auto-scheduled time: 26.699ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 35
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4377ms
+Auto-scheduled time: 26.812ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 36
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.4703ms
+Auto-scheduled time: 27.406ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 37
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 10.472ms
+Auto-scheduled time: 25.8727ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+
+
+RL_END_OF_RUN 38
+

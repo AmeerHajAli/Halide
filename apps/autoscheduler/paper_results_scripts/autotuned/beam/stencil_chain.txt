@@ -1,0 +1,262 @@
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.59959ms
+Auto-scheduled time: 8.92643ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.56951ms
+Auto-scheduled time: 8.79037ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.60297ms
+Auto-scheduled time: 8.80619ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 3
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.59461ms
+Auto-scheduled time: 8.81129ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 4
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.6174ms
+Auto-scheduled time: 8.90747ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 5
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.60381ms
+Auto-scheduled time: 8.86324ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 6
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.57972ms
+Auto-scheduled time: 8.75335ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 7
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.5946ms
+Auto-scheduled time: 8.82983ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 8
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.59407ms
+Auto-scheduled time: 8.83898ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 9
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.58981ms
+Auto-scheduled time: 8.8521ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 10
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.5999ms
+Auto-scheduled time: 8.87648ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 11
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.57752ms
+Auto-scheduled time: 8.85079ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 12
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.60412ms
+Auto-scheduled time: 8.73797ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 13
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.59411ms
+Auto-scheduled time: 8.88649ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 14
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.64639ms
+Auto-scheduled time: 8.92015ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 15
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.58565ms
+Auto-scheduled time: 8.85413ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 16
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.60517ms
+Auto-scheduled time: 8.79904ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 17
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.56854ms
+Auto-scheduled time: 8.84073ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 18
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.61439ms
+Auto-scheduled time: 8.79869ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 19
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.58318ms
+Auto-scheduled time: 8.81435ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 20
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.59728ms
+Auto-scheduled time: 8.83715ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 21
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.59808ms
+Auto-scheduled time: 8.7954ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 22
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.59505ms
+Auto-scheduled time: 8.77941ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 23
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.57555ms
+Auto-scheduled time: 8.80287ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 24
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.57859ms
+Auto-scheduled time: 8.94078ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 25
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.57645ms
+Auto-scheduled time: 8.83562ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 26
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.61781ms
+Auto-scheduled time: 8.84519ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 27
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.58178ms
+Auto-scheduled time: 8.77619ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 28
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+bin/host/process ../images/rgb.png 10 bin/host/out.png
+Manually-tuned time: 4.6205ms
+Auto-scheduled time: 8.86671ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/stencil_chain'
+
+
+RL_END_OF_RUN 29
+

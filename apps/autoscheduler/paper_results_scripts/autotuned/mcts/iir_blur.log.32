@@ -1,0 +1,20 @@
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
+c++ -O3 -std=c++11 -I /home/ubuntu/llvm-project/Halide/distrib/include/ -I /home/ubuntu/llvm-project/Halide/distrib/tools/  -Wall -Werror -Wno-unused-function -Wcast-qual -Wignored-qualifiers -Wno-comment -Wsign-compare -Wno-unknown-warning-option -Wno-psabi -fopenmp -g iir_blur_generator.cpp /home/ubuntu/llvm-project/Halide/distrib/tools/GenGen.cpp -o bin/host/iir_blur.generator -Wl,-rpath,/home/ubuntu/llvm-project/Halide/distrib/bin/ -L /home/ubuntu/llvm-project/Halide/distrib/bin/ -lHalide  -ldl -lpthread -lz
+bin/host/iir_blur.generator -g iir_blur -f iir_blur -o bin/host target=host-no_runtime auto_schedule=false
+bin/host/iir_blur.generator -g iir_blur -f iir_blur_auto_schedule -o bin/host target=host-no_runtime auto_schedule=true -p /home/ubuntu/llvm-project/Halide/apps/autoscheduler/bin/libauto_schedule.so -s Adams2019
+mcts_depth 10
+num_random_trees 15
+num_greedy_trees 1
+best intermediate value -1.11111e+11
+finished depth 0 best value so far 0
+best intermediate value -11.7111
+finished depth 1 best value so far -11.7111
+best intermediate value -9.60253
+finished depth 2 best value so far -9.60253
+best intermediate value -1.11111e+11
+finished depth 3 best value so far -9.60253
+best intermediate value -9.57533
+finished depth 4 best value so far -9.57533
+Makefile:19: recipe for target 'bin/host/iir_blur_auto_schedule.a' failed
+rm bin/host/iir_blur.a
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/iir_blur'
