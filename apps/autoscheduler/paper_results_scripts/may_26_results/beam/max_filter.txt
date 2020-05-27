@@ -1,0 +1,28 @@
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/max_filter'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 39.1048ms
+Auto-scheduled time: 26.8658ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/max_filter'
+
+
+RL_END_OF_RUN 1
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/max_filter'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 40.847ms
+Auto-scheduled time: 27.3626ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/max_filter'
+
+
+RL_END_OF_RUN 2
+
+make: Entering directory '/home/ubuntu/llvm-project/Halide/apps/max_filter'
+bin/host/filter ../images/rgba.png bin/host/out.png
+Manually-tuned time: 41.4135ms
+Auto-scheduled time: 27.5687ms
+make: Leaving directory '/home/ubuntu/llvm-project/Halide/apps/max_filter'
+
+
+RL_END_OF_RUN 3
+
